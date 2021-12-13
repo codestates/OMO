@@ -1,7 +1,7 @@
 ---
-name: KPT template
-about: KPT template
-title: KPT 회고 템플릿 제목 설정하기
+name: KPT Template
+about: KPT Template
+title: KPT 회고 템플릿 제목 설정
 labels: ''
 assignees: ''
 

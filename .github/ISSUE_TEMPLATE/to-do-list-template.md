@@ -1,7 +1,7 @@
 ---
 name: To Do List Template
 about: To Do List Template
-title: To Do List Template 제목 설정하기
+title: To Do List Template 제목 설정
 labels: ''
 assignees: ''
 
