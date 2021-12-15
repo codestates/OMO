@@ -1,0 +1,13 @@
+env:
+  browser: true
+  es6: true
+  node: true
+extends:
+  - airbnb
+plugins:
+  - eslint-plugin-react
+  - eslint-plugin-jsx
+  - eslint-plugin-react-hooks
+rules:
+  react/react-in-jsx-scope: off
+  react/jsx-filename-extension: [1, { 'extensions': ['.js', '.jsx'] }]
