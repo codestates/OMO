@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 
 export default function Login () {
   return (
-    <div>Login page</div>
+    <div> Achievement Page!</div>
 
   );
 }
