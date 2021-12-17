@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import axios from 'axios';
 
-export default function Mypage () {
+axios.defaults.withCredentials = true;
+
+export default function Mypage ({ userInfo }) {
   return (
-    <div>Mypage</div>
+    <div>
+      <div>Mypage</div>
+      <center />
+    </div>
   );
 }
+
+{ /* // userinfo, todolist */ }
+
