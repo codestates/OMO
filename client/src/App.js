@@ -4,6 +4,7 @@ import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import Mainpage from './pages/Mainpage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+
 import axios from 'axios';
 
 export default function App () {
@@ -30,6 +31,8 @@ export default function App () {
     isAuthenticated();
   }, []);
 
+
+
   return (
     <div>
       <Switch>
@@ -45,6 +48,7 @@ export default function App () {
         </Route>
         <Route exact path='/mainpage'>
           <Mainpage userInfo={userInfo} />
+
         </Route>
         <Route path='/'>
           {isLogin ? <Redirect to='/mainpage' /> : <Redirect to='/login' />}

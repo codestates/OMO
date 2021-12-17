@@ -1,0 +1,14 @@
+
+
+.icon {
+  display: flex;
+  flex-direction:column;
+  color: black;
+  font-size: 2em;
+  margin: 1rem;
+}
+
+.logout {
+  display:flex;
+  align-items: flex-end;
+}
