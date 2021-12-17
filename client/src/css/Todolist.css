@@ -1,0 +1,65 @@
+.todocontainer {
+  z-index: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+}
+.todoinput {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid lime;
+  margin: 2em;
+}
+.todolist {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  margin: 2rem;
+  border: 2px solid red
+}
+
+.todobox {
+  display: flex;
+  border-radius: 7px;
+  border-style: none;
+  background-color: #eceff1;
+  height: 2em;
+  width: 50em;
+}
+
+.colortag {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 1px solid grey;
+  background-color: red;
+}
+.sorttodo {
+  position: relative;
+  display: flex;
+}
+.todolistsort {
+  display: flex;
+  background-color: whitesmoke;
+  border: 1px solid grey;
+  border-left: 4px solid black;
+}
+
+.taglist {
+  font-size: 1em;
+  font-style: italic;
+  color:#63ccff
+}
+/* 
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button { 
+  display: none; 
+} 
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  color: red; 
+} 
+input[type="date"] { 
+  background: grey; 
+  color: white; 
+} */
