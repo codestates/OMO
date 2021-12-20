@@ -23,15 +23,16 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'cascade'
       })
     }
-  };
+  }
   todolist.init({
     content: DataTypes.STRING,
     checkbox: DataTypes.BOOLEAN,
-    endtime: DataTypes.DATE,
-    color: DataTypes.STRING
+    endtime: DataTypes.STRING,
+    color: DataTypes.STRING,
+    tag_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'todolist',
+    modelName: 'todolist'
   });
   return todolist;
 };

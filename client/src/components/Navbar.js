@@ -7,26 +7,22 @@ import { ImList } from 'react-icons/im';
 import { GrLogout } from 'react-icons/gr';
 
 const Navbar = () => {
-  function buttonClickHandler () {
-
-  }
-
   return (
     // https://react-icons.github.io/react-icons 참고
-    <div className='navbar'>
-      <Link to='/mainpage'>
+    <section className='navbar'>
+      <Link to='/mainpage/todolist'>
         <ImList className='icon' />
       </Link>
-      <Link to='/achievement'>
+      <Link to='/mainpage/achievement'>
         <BsTrophyFill className='icon' />
       </Link>
-      <Link to='/mypage'>
+      <Link to='/mainpage/mypage'>
         <FaUserCircle className='icon' />
       </Link>
       <div className='logouticon'>
         <GrLogout className='logout' />
       </div>
-    </div>
+    </section>
 
   );
 };

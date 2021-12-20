@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       endtime: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       color: {
         type: Sequelize.STRING

@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'cascade'
       })
     }
-  };
+  }
   monthly_achievement.init({
     month: DataTypes.STRING,
     monthlyAchievementRatio: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'monthly_achievement',
+    modelName: 'monthly_achievement'
   });
   return monthly_achievement;
 };

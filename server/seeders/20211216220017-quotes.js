@@ -28,7 +28,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-
     return queryInterface.bulkDelete('quotes', null, {});
   }
 };

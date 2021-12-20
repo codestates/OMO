@@ -1,3 +1,7 @@
+
+
+/* 반응형으로 만들기 */
+
 .login_container {
   display: flex;
   align-items: center;
@@ -7,7 +11,7 @@
   box-shadow: 1px 1px 4px grey;
   margin: 10em;
   padding: 20px;
-  position: absolute;
+  position: relative;
 }
 
 .login_section {
@@ -15,12 +19,14 @@
   justify-items: row;
 }
 .omo_logo {
+  display: flex;
   width: 30rem;
   height: 40rem;
   border: 1px solid orange;
   box-shadow: none;
   margin: 0;
   padding: 10px;
+  position: relative;
 }
 
 .login {
@@ -31,6 +37,7 @@
   box-shadow: none;
   margin: 0;
   padding: 10px;
+  position: relative;
 }
 
 .id_pw_wrap {
