@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../css/Login.css';
 import './Mainpage.js';
-import '../../asset/images/omo.png';
 
 axios.defaults.withCredentials = true;
 
@@ -50,9 +49,9 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
     <div>
       <div className='login_container'>
         <div className='login_section'>
-          <img className='omo_logo'>
+          <div className='omo_logo'>
           omo logo
-          </img>
+          </div>
           <div className='login'>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className='id_pw_wrap'>
