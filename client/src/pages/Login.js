@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Mainpage.js';
-import { Button, SocialLoginBtn } from '../components/Button';
+import { Button, LoginThemeBtn, SocialLoginBtn } from '../components/Button';
 import { SocialLoginContainer } from '../components/Signupinput';
 import { Message, Errormessage } from '../components/Message';
+import kakaologin from '../asset/images/kakao_login_medium_wide.png';
 import { 
   ModalBackground,
   LoginContainer,
-  CloseButton,
   InputContainer,
   LoginTitle,
   InputId,
-  InputPW
+  InputPW,
 } from '../components/Logininput';
 
 axios.defaults.withCredentials = true;
 
-export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleResponseSuccess }) {
+export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) {
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     userId: '',
@@ -52,7 +52,7 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
 
     axios
       .post(
-        'https://localhost:4000/user/login',
+        'http://localhost:4000/user/login',
         {
           userId,
           password
@@ -71,32 +71,26 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
 
   return (
     <div>
-    {
-      modalHandleLogin ?
       <ModalBackground>
         <LoginContainer>
-          <CloseButton>x</CloseButton>
           <LoginTitle>OMO 로그인</LoginTitle>
           <InputContainer>
             <InputId onChange={handleInputId}></InputId>
             <InputPW onChange={handleInputPW}></InputPW>
             <Errormessage>{errorMessage}</Errormessage>
-            <Button onClick={getLoginUserInfo}>
+            <LoginThemeBtn onClick={getLoginUserInfo}>
               로그인
-            </Button>
+            </LoginThemeBtn>
             <Message>아직 아이디가 없으신가요? 👇</Message>
-            <Button>
+            <LoginThemeBtn>
               <Link to='./signup'>회원가입</Link>
-              </Button>
+              </LoginThemeBtn>
           </InputContainer>
           <SocialLoginContainer>
-            <SocialLoginBtn>kakao</SocialLoginBtn>
+            <img src={kakaologin} width='60%' />
           </SocialLoginContainer>
         </LoginContainer>
       </ModalBackground>
-      :
-      null
-    }
     </div>
   );
 };

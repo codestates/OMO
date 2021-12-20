@@ -3,7 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import axios from 'axios';
 import './Mainpage.js';
-import { Button, SocialLoginBtn } from '../components/Button';
+import kakaologin from '../asset/images/kakao_login_medium_wide.png';
+import { Button, LoginThemeBtn, SocialLoginBtn } from '../components/Button';
 import { Errormessage } from '../components/Message';
 import {
   ModalBackground,
@@ -80,7 +81,7 @@ export default function Signup ({ modalHandleSignup }) {
 
     axios
       .post(
-        'https://localhost:4000/user/signup',
+        'http://localhost:4000/user/signup',
         {
           userId,
           password,
@@ -100,25 +101,22 @@ export default function Signup ({ modalHandleSignup }) {
 
   return (
     <div>
-      {
-    modalHandleSignup
-      ? <ModalBackground>
+      <ModalBackground>
         <SignupContainer>
-          <CloseButton>x</CloseButton>
           <SignupTitle>회원가입</SignupTitle>
           <InputContainer>
             <InputUsername onChange={handleInputUsername} />
             <InputId onChange={handleInputIdValue} />
             <InputPW onChange={handleInputPWValue} />
-          </InputContainer>
           {/* 필수 항목이 빠진 경우, 에러 메시지 */}
           <Errormessage>{errorMessage}</Errormessage>
-          <Button onClick={handleSignup}>
+          <LoginThemeBtn onClick={handleSignup}>
             가입하기
-          </Button>
+          </LoginThemeBtn>
+          </InputContainer>
           {/* 소셜 로그인 버튼 */}
           <SocialLoginContainer>
-            <SocialLoginBtn>kakao</SocialLoginBtn>
+            <img src={kakaologin} width='60%' />
           </SocialLoginContainer>
           {/* 아이디가 있으면 '로그인' 페이지로 이동 */}
           <LinkToLogin>
@@ -127,8 +125,6 @@ export default function Signup ({ modalHandleSignup }) {
           </LinkToLogin>
         </SignupContainer>
       </ModalBackground>
-      : null
-    }
     </div>
   );
 }

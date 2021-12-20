@@ -22,12 +22,6 @@ export const SignupContainer = styled.div`
   background: #fff;
 `;
 
-// 회원가입: 닫기
-export const CloseButton = styled.div`
-  float: right;
-  font-size: 25px;
-`;
-
 // 회원가입: input Container
 export const InputContainer = styled.div`
   margin: 0 auto;
@@ -106,6 +100,7 @@ export const SocialLoginContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   /* border: 1px solid #4D94E6; */
 `;
