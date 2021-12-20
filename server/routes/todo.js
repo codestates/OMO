@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const controller = require('../controllers/todo');
 
-router.get('/todos/:userId', controller.get);
-router.post('/todo/:userId', controller.post);
-router.delete('/todo', controller.delete);
+router.get('/:userId', controller.get);
+router.get('/undolist/:userId', controller.show);
+router.post('/:userId', controller.post);
+router.delete('/:userId', controller.delete);
+router.put('/:userId', controller.put);
+
 module.exports = router;

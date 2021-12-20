@@ -2,7 +2,6 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-
     return queryInterface.bulkInsert('users', [
       {
         id: '1',
@@ -11,7 +10,7 @@ module.exports = {
         password: '1234',
         socialLogin: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         id: '2',
@@ -20,7 +19,7 @@ module.exports = {
         password: '1234',
         socialLogin: false,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         id: '3',
@@ -29,13 +28,12 @@ module.exports = {
         password: '1234',
         socialLogin: true,
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       }
     ]);
   },
 
   down: async (queryInterface, Sequelize) => {
-
     return queryInterface.bulkDelete('users', null, {});
   }
 };
