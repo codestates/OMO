@@ -9,9 +9,17 @@ import axios from 'axios';
 
 export default function App () {
   const [isLogin, setIsLogin] = useState(false);
+  const [isOpenSignup, setIsOpenSignup] = useState(false);  // modal로 연결
+  const [isOpenLogin, setIsOpenLogin] = useState(false); // modal로 연결
   const [userInfo, setUserInfo] = useState(null);
   const history = useHistory();
 
+  const modalHandleSignup = () => {
+    setIsOpenSignup(!isOpenSignup);
+  };
+  const modalHandleLogin = () => {
+    setIsOpenLogin(!isOpenLogin);
+  };
   const isAuthenticated = () => {
     axios.post('https://localhost:4000/auth') // 엔드포인트 수정 필요
       .then((res) => {
@@ -39,12 +47,13 @@ export default function App () {
         <Route path='/login'>
           <Login
             isLogin={isLogin}
+            modalHandleLogin={modalHandleLogin}
             handleLogin={handleLogin}
             handleResponseSuccess={handleResponseSuccess}
           />
         </Route>
         <Route exact path='/signup'>
-          <Signup />
+          <Signup modalHandleSignup={modalHandleSignup} />
         </Route>
         <Route exact path='/mainpage'>
           <Mainpage userInfo={userInfo} />
@@ -52,7 +61,7 @@ export default function App () {
         </Route>
         <Route path='/'>
           {/* props 전달 되는지 확인 필요 */}
-          {true ? <Redirect to={{ 
+          {isLogin ? <Redirect to={{ 
             pathname: '/mainpage/todolist',
             state: {from: userInfo}
             }} 

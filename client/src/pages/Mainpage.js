@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Todolist from './Todolist';
 import Mypage from './Mypage';
@@ -23,8 +22,8 @@ export default function Mainpage () {
         <div className='mainpage'>
           <div className='navbar'>
             <Navbar />
-            </div>
-            <section className='content'>
+          </div>
+          <section className='content'>
             <Switch>
               <Route path='/mainpage/todolist'>
                 <Todolist />
@@ -36,8 +35,8 @@ export default function Mainpage () {
                 <Mypage />
               </Route>
             </Switch>
-            </section>
-          
+          </section>
+
         </div>
         <div className='footer'>
           <Footer />
