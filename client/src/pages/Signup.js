@@ -80,7 +80,7 @@ export default function Signup ({ modalHandleSignup }) {
 
     axios
       .post(
-        'https://localhost:4000/user/signup',
+        'http://localhost:4000/user/signup',
         {
           userId,
           password,
