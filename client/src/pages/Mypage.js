@@ -7,7 +7,7 @@ export default function Mypage ({ userInfo }) {
   return (
     <div>
       <div>Mypage</div>
-      <center />
+      
     </div>
   );
 }
