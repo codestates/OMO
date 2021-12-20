@@ -5,3 +5,11 @@
 // 서비스에 활용할 수 있습니다.
 // 프로필 정보는 사용자의 이름, 메일 주소, 별명, 프로필 사진, 생일, 연령대, 성별 정보가 포함되며
 // API로 간단하게 조회할 수 있습니다.
+
+const router = require('express').Router();
+const controller = require('../controllers/callback');
+
+router.get('/callback', controller.callback); // 로그인
+
+module.exports = router;
+
