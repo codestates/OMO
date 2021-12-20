@@ -51,7 +51,12 @@ export default function App () {
 
         </Route>
         <Route path='/'>
-          {isLogin ? <Redirect to='/mainpage' /> : <Redirect to='/login' />}
+          {/* props 전달 되는지 확인 필요 */}
+          {true ? <Redirect to={{ 
+            pathname: '/mainpage/todolist',
+            state: {from: userInfo}
+            }} 
+            /> : <Redirect to='/login' />}
         </Route>
       </Switch>
     </div>
