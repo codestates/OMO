@@ -20,27 +20,17 @@ module.exports = {
     const userId = parseInt(req.params.userId, 10);
     if (Number.isNaN(userId)) return res.status(400).json({ message: 'failure' });
     const todoInfo = req.body.data;
-    TagModel.findOrCreate({
-      where : {
-        tagName : todoInfo.tag
-      },
-      defaults: {
-        tagName : todoInfo.tag
-      }
-    })
-    .then((result) => {
-      TodoModel.create({
+    TodoModel.create({
         user_id : userId,
         content : todoInfo.content,
         checkbox : false,
         endtime : todoInfo.endtime,
         color : todoInfo.color,
-        tag_id : result[0].id
+        tag : todoInfo.tag
       })
       .then((todoList) => {
         res.status(201).json(todoList)
       })
-    })
   },
   delete: (req, res) => { // db response 완료
     const todoId = parseInt(req.query.todoId, 10);

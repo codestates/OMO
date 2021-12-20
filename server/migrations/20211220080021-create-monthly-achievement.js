@@ -1,15 +1,18 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('tags', {
+    await queryInterface.createTable('monthly_achievements', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tagName: {
+      month: {
         type: Sequelize.STRING
+      },
+      monthlyAchievementRatio: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -19,9 +22,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
+    .then(() => {
+      queryInterface.addColumn('monthly_achievements', 'user_id', {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        OnDelete: 'cascade',
+        references: { model: 'users', key: 'id'}
+      });
+    })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tags');
+    await queryInterface.dropTable('monthly_achievements');
   }
 };

@@ -12,7 +12,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         user_id: '1',
-        tag_id: '1'
+        tags: '회의,작성'
       },
       {
         id: '2',
@@ -23,7 +23,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         user_id: '1',
-        tag_id: '1'
+        tags: '이슈,작성'
       },
       {
         id: '3',
@@ -34,7 +34,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         user_id: '1',
-        tag_id: '2'
+        tags: '일정수립'
       },
       {
         id: '4',
@@ -45,7 +45,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         user_id: '2',
-        tag_id: '3'
+        tags: '가족,긴급'
       },
       {
         id: '5',
@@ -56,7 +56,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         user_id: '3',
-        tag_id: '4'
+        tags: '원준,유치원,긴급'
       }
 
     ]);

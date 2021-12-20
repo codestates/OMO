@@ -2,31 +2,28 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('users', [
+    return queryInterface.bulkInsert('monthly_achievements', [
       {
         id: '1',
-        userId: 'test1',
-        username: 'test1',
-        password: '1234',
-        socialLogin: false,
+        user_id: '1',
+        month: '2021-12',
+        monthlyAchievementRatio: '78',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: '2',
-        userId: 'test2',
-        username: 'test2',
-        password: '1234',
-        socialLogin: false,
+        user_id: '2',
+        month: '2021-12',
+        monthlyAchievementRatio: '88',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: '3',
-        userId: 'test3',
-        username: 'test3',
-        password: '1234',
-        socialLogin: true,
+        user_id: '3',
+        month: '2021-12',
+        monthlyAchievementRatio: '98',
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -34,6 +31,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('users', null, {});
+    return queryInterface.bulkDelete('monthly_achievements', null, {});
   }
 };

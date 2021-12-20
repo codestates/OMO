@@ -2,28 +2,31 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('tags', [
+    return queryInterface.bulkInsert('users', [
       {
         id: '1',
-        tagName: '회사',
+        userId: 'test1',
+        username: 'test1',
+        password: '1234',
+        socialLogin: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: '2',
-        tagName: '오전',
+        userId: 'test2',
+        username: 'test2',
+        password: '1234',
+        socialLogin: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: '3',
-        tagName: '가족',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        id: '4',
-        tagName: '급함',
+        userId: 'test3',
+        username: 'test3',
+        password: '1234',
+        socialLogin: true,
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -31,6 +34,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('tags', null, {});
+    return queryInterface.bulkDelete('users', null, {});
   }
 };
