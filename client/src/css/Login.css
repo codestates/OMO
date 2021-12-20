@@ -11,7 +11,7 @@
   box-shadow: 1px 1px 4px grey;
   margin: 10em;
   padding: 20px;
-  position: absolute;
+  position: relative;
 }
 
 .login_section {
@@ -26,6 +26,7 @@
   box-shadow: none;
   margin: 0;
   padding: 10px;
+  position: relative;
 }
 
 .login {
@@ -36,6 +37,7 @@
   box-shadow: none;
   margin: 0;
   padding: 10px;
+  position: relative;
 }
 
 .id_pw_wrap {

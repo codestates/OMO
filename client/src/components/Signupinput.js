@@ -53,8 +53,8 @@ export const SignupTitle = styled.div`
 
 // 회원가입 input: ID
 export const InputId = styled.input.attrs({
-  placeholder: "ID",
-  type: "text"
+  placeholder: 'ID',
+  type: 'text'
 })`
   margin-top: 10px;
   border-radius: 2px;
@@ -68,8 +68,8 @@ export const InputId = styled.input.attrs({
 
 // 회원가입 input: Username
 export const InputUsername = styled.input.attrs({
-  placeholder: "Username",
-  type: "text"
+  placeholder: 'Username',
+  type: 'text'
 })`
   margin-top: 10px;
   border-radius: 2px;
@@ -83,8 +83,8 @@ export const InputUsername = styled.input.attrs({
 
 // 회원가입 input: Password
 export const InputPW = styled.input.attrs({
-  placeholder: "Password",
-  type: "password"
+  placeholder: 'Password',
+  type: 'password'
 })`
 
   margin-top: 10px;
@@ -111,7 +111,6 @@ export const SocialLoginContainer = styled.div`
 `;
 
 // 소셜 로그인 버튼 -> Button Component에 SocialLoginBtn
-
 
 // 아이디가 있을 경우 로그인 페이지로 이동
 export const LinkToLogin = styled.div`

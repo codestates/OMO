@@ -53,8 +53,8 @@ export const LoginTitle = styled.div`
 
 // Login input: ID
 export const InputId = styled.input.attrs({
-  placeholder: "ID",
-  type: "text"
+  placeholder: 'ID',
+  type: 'text'
 })`
   margin-top: 10px;
   border-radius: 2px;
@@ -68,8 +68,8 @@ export const InputId = styled.input.attrs({
 
 // Login input: Password
 export const InputPW = styled.input.attrs({
-  placeholder: "Password",
-  type: "password"
+  placeholder: 'Password',
+  type: 'password'
 })`
 
   margin-top: 10px;

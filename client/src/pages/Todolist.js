@@ -1,47 +1,36 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 import { BsPlusLg } from 'react-icons/bs';
 import { FaTrashAlt } from 'react-icons/fa';
-
+import { Selectcolor } from '../components/Selectcolor';
+import { Todoinput } from '../components/Todoinput';
+import { Tag } from '../components/Tag';
 import '../css/Todolist.css';
 
 export default function Todolist () {
+  const [startDate, setStartDate] = useState(new Date());
+
   const createTodo = () => {
 
   };
+  const inputDate = () => {
+
+  };
+  // 미처리 문제
+  // 1. onKeyPress로 add될 때 tags 상태를 todoinputvalue랑 같이 보내줘야 함
+  // 2. date value 받아서 전송해야함
 
   return (
     <div className='todocontainer'>
       <div className='todoinput'>
-        <div className='addtodolist'>
-          <input type='text' className='todobox' placeholder='To do 를 작성하세요' size='10' />
-          <button>+</button>
-          <BsPlusLg className='plusicon' />
-        </div>
-        <div className='todoattribute'>
-          <div className='colortag' />
-          <input type='date' classname='date' />
-          <div class='content'>
-            <input type='hidden' value='' name='tag' id='rdTag' />
-            <button type='submit'>태그등록</button>
-            <ul id='tag-list' />
-            <div>
-              <input type='text' id='tag' size='7' placeholder='#tag' />
-            </div>
-          </div>
-        </div>
+        <Todoinput />
+        <Tag />
       </div>
-
       <div className='todolist'>
-        <dl>
-          <dt>
-            <div className='date' />
-            <input type='checkbox' />
-            <span className='todolistsort'> 여기에 todo 목록 정렬 </span>
-            <FaTrashAlt />
-            {/* tag 검색 기능 */}
-            <div className='taglist'>#tag</div>
-          </dt>
-        </dl>
+        {/* <Todolist/> */}
+        <FaTrashAlt />
+        {/* tag 검색 기능 */}
+        <div className='taglist'>#tag</div>
       </div>
     </div>
   );

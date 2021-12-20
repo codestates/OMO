@@ -25,16 +25,11 @@
   border-radius: 7px;
   border-style: none;
   background-color: #eceff1;
-  height: 2em;
-  width: 50em;
+  margin-top: 2rem;
 }
 
 .colortag {
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  border: 1px solid grey;
-  background-color: red;
+
 }
 .sorttodo {
   position: relative;
