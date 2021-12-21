@@ -108,22 +108,26 @@ module.exports = {
     if (Number.isNaN(userId)) return res.status(400).json({ message: 'failure' });
     TodoModel.destroy({
       where: {
-        id: userId
+        user_id: userId
       }
     })
-      .then(() => {
+      .then((result) => {
+        console.log('todo 테이블은 삭제함', result)
         UserModel.destroy({
           where: {
             id: userId
           }
         })
-          .then((result) => {
-            if (result !== 0) {
-              res.status(204).json({ message: '유저가 탈퇴되었습니다.' });
-            } else {
-              res.status(401).json({ message: 'failure' });
-            }
-          });
-      });
+        .then((result) => {
+          res.status(204).json({ message: '유저가 탈퇴되었습니다.' });
+          console.log('user 테이블은 삭제함', result)
+        })
+        .catch((error) => {
+          res.status(401).json({ message: 'failure' });
+        })
+      })
+      .catch((error) => {
+        res.status(401).json({ message: 'failure' });
+      })
   }
 };
