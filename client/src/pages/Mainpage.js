@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-
 import Todolist from './Todolist';
 import Mypage from './Mypage';
 import Achievement from './Achievement';
 import '../css/Mainpage.css';
 
+
 export default function Mainpage ({ userInfo }) {
+
   return (
     <div className='page'>
       <BrowserRouter>

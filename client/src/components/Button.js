@@ -29,6 +29,7 @@ overflow: hidden;
   background: #2683C9;
 }
 `;
+
 export const SignOutBtn = styled.button`
 width:  ${props => props.theme.width};
 height:  ${props => props.theme.height};
@@ -53,9 +54,25 @@ overflow: hidden;
 }
 `;
 
+export const LoginThemeBtn = styled.button`  // 로그인 페이지 버튼 테마
+  background: #4D94E6;
+  border: none;
+  color: white;
+  width: 60%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 9px 12px;
+  border-radius: 2px;
+`;
+
 export const SocialLoginBtn = styled.button`
   border-color: #feec34;
   background: #feec34;
+  width: 60%;
   height: 40px;
   display: flex;
   align-items: center;
@@ -78,7 +95,4 @@ SignOutBtn.defaultProps = {
   }
 };
 
-const boxtheme = {
-  width: '100px',
-  height: '30px'
-};
+
