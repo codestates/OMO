@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 // 모달: 배경
 export const ModalBackground = styled.div`
@@ -20,12 +20,6 @@ export const SignupContainer = styled.div`
   margin: 50px auto;
   padding: 20px;
   background: #fff;
-`;
-
-// 회원가입: 닫기
-export const CloseButton = styled.div`
-  float: right;
-  font-size: 25px;
 `;
 
 // 회원가입: input Container
@@ -97,6 +91,22 @@ export const InputPW = styled.input.attrs({
   box-sizing: border-box;
 `;
 
+// 회원가입 input: PasswordCheck
+export const InputPWChk = styled.input.attrs({
+  placeholder: 'Password Check',
+  type: 'password'
+})`
+
+  margin-top: 10px;
+  border-radius: 2px;
+  width: 60%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  padding: 9px 12px;
+  outline: none;
+  box-sizing: border-box;
+`;
+
 // 소셜 로그인 container
 export const SocialLoginContainer = styled.div`
   margin: 10px auto;
@@ -106,6 +116,7 @@ export const SocialLoginContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   /* border: 1px solid #4D94E6; */
 `;

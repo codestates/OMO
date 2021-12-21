@@ -2,22 +2,24 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Mainpage.js';
-import { Button, SocialLoginBtn } from '../components/Button';
+import './KakaoLogin';
+import { Button, LoginThemeBtn, SocialLoginBtn } from '../components/Button';
 import { SocialLoginContainer } from '../components/Signupinput';
 import { Message, Errormessage } from '../components/Message';
+
+import kakaologin from '../asset/images/kakao_login_medium_wide.png';
 import { 
   ModalBackground,
   LoginContainer,
-  CloseButton,
   InputContainer,
   LoginTitle,
   InputId,
-  InputPW
+  InputPW,
 } from '../components/Logininput';
 
 axios.defaults.withCredentials = true;
 
-export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleResponseSuccess }) {
+export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) {
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     userId: '',
@@ -26,8 +28,8 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
   const [errorMessage, setErrorMessage] = useState(''); // 에러 메세지 전달
 
   const handleInputId = (e) => {
-    const {userId, password} = userInfo;
-    
+    const { userId, password } = userInfo;
+
     setUserInfo({
       userId: e.target.value,
       password
@@ -35,20 +37,19 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
   };
 
   const handleInputPW = (e) => {
-    const {userId, password} = userInfo;
+    const { userId, password } = userInfo;
     setUserInfo({
       userId,
       password: e.target.value
     });
-  }
+  };
 
   const getLoginUserInfo = () => {
     const { userId, password } = userInfo;
     if (userId === '' || password === '') {
       setErrorMessage('이메일과 비밀번호를 확인하세요'); // 에러 상태 함수
       return;
-    } 
-    
+    }
 
     axios
     .post(
@@ -69,34 +70,35 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
       .catch((e) => console.log(e));
   };
 
+  const kakaoLoginHandler = () => {
+    const kakaoLoginUrl = process.env.REACT_APP_KAKAO_LOGIN_URI;
+    window.location.assign(kakaoLoginUrl);
+  };
+
   return (
     <div>
-    {
-      modalHandleLogin ?
       <ModalBackground>
         <LoginContainer>
-          <CloseButton>x</CloseButton>
           <LoginTitle>OMO 로그인</LoginTitle>
           <InputContainer>
             <InputId onChange={handleInputId}></InputId>
             <InputPW onChange={handleInputPW}></InputPW>
             <Errormessage>{errorMessage}</Errormessage>
-            <Button onClick={getLoginUserInfo}>
+            <LoginThemeBtn onClick={getLoginUserInfo}>
               로그인
-            </Button>
-            <Message>아직 아이디가 없으신가요? 👇</Message>
-            <Button>
-              <Link to='./signup'>회원가입</Link>
-              </Button>
-          </InputContainer>
+            </LoginThemeBtn>
           <SocialLoginContainer>
-            <SocialLoginBtn>kakao</SocialLoginBtn>
+            {/* <SocialLoginBtn onClick={kakaoLoginHandler}> */}
+            <img src={kakaologin} width='67%' onClick={kakaoLoginHandler} />
+            {/* </SocialLoginBtn> */}
           </SocialLoginContainer>
+            <Message>아직 아이디가 없으신가요? 👇</Message>
+            <LoginThemeBtn>
+              <Link to='./signup' style={{ color: 'inherit', textDecoration: 'none' }}>회원가입</Link>
+              </LoginThemeBtn>
+          </InputContainer>
         </LoginContainer>
       </ModalBackground>
-      :
-      null
-    }
     </div>
   );
-};
+}

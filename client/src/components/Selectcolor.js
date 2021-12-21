@@ -4,6 +4,14 @@ import styled, { ThemeProvider } from 'styled-components';
 export const SelectColorContainer = styled.div`
 
 `;
+
+export const SelectColorBackdrop = styled.div`
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.4);
+  display: grid;
+
+`;
 export const SelectColorOpenBtn = styled.button`
   margin: 1em;
   height: 2em;
@@ -16,11 +24,11 @@ export const SelectColorOpenBtn = styled.button`
 export const SelectColorBox = styled.div`
 display: flex;
 flex-flow: wrap;
-height: 5em;
-width: 8em;
+height: 6em;
+width: 10em;
 margin: 0px;
 border-style: none;
-border: 1 solid red;
+border: 1px solid blue;
 background-color: whitesmoke;
 margin: 0px;
 
@@ -63,7 +71,7 @@ const deepblue = {
 };
 
 export const Selectcolor = () => {
-  const [selectColor, setSelectColor] = useState('black');
+  const [selectColor, setSelectColor] = useState('#1A1A1A');
   const [isOpen, setIsOpen] = useState(false);
 
   const selectColorHandler = (e) => {
@@ -74,26 +82,29 @@ export const Selectcolor = () => {
 
   return (
     <SelectColorContainer>
-      <SelectColorOpenBtn value='' onClick={selectColorHandler} background={selectColor} />
+      <SelectColorOpenBtn onClick={selectColorHandler} background={selectColor} />
       {isOpen === true
-        ? <SelectColorBox>
-          <SelectColorBtn value='#1A1A1A' onClick={selectColorHandler} />
-          <ThemeProvider theme={red}>
-            <SelectColorBtn value='#DA0063' onClick={selectColorHandler} />
-          </ThemeProvider>
-          <ThemeProvider theme={yellow}>
-            <SelectColorBtn value='#FAC710' onClick={selectColorHandler} />
-          </ThemeProvider>
-          <ThemeProvider theme={green}>
-            <SelectColorBtn value='#0CA789' onClick={selectColorHandler} />
-          </ThemeProvider>
-          <ThemeProvider theme={blue}>
-            <SelectColorBtn value='#2D9BF0' onClick={selectColorHandler} />
-          </ThemeProvider>
-          <ThemeProvider theme={deepblue}>
-            <SelectColorBtn value='#414BB2' onClick={selectColorHandler} />
-          </ThemeProvider>
+        ? <SelectColorBackdrop onClick={selectColorHandler}>
+          <SelectColorBox>
+            <SelectColorBtn value='#1A1A1A' onClick={selectColorHandler} />
+            <ThemeProvider theme={red}>
+              <SelectColorBtn value='#DA0063' onClick={selectColorHandler} />
+            </ThemeProvider>
+            <ThemeProvider theme={yellow}>
+              <SelectColorBtn value='#FAC710' onClick={selectColorHandler} />
+            </ThemeProvider>
+            <ThemeProvider theme={green}>
+              <SelectColorBtn value='#0CA789' onClick={selectColorHandler} />
+            </ThemeProvider>
+            <ThemeProvider theme={blue}>
+              <SelectColorBtn value='#2D9BF0' onClick={selectColorHandler} />
+            </ThemeProvider>
+            <ThemeProvider theme={deepblue}>
+              <SelectColorBtn value='#414BB2' onClick={selectColorHandler} />
+            </ThemeProvider>
           </SelectColorBox>
+
+        </SelectColorBackdrop>
         : null}
     </SelectColorContainer>
   );
