@@ -5,6 +5,7 @@ import Mainpage from './pages/Mainpage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import axios from 'axios';
+import KakaoLogin from './pages/KakaoLogin';
 
 export default function App () {
   const [isLogin, setIsLogin] = useState(false);
@@ -31,7 +32,6 @@ export default function App () {
   }, []);
 
 
-
   return (
     <div>
       <Switch>
@@ -47,7 +47,9 @@ export default function App () {
         </Route>
         <Route exact path='/mainpage'>
           <Mainpage userInfo={userInfo} />
-
+        </Route>
+        <Route path='/kakaoLogin'>
+          <KakaoLogin />
         </Route>
         <Route path='/'>
           {/* props 전달 되는지 확인 필요 */}

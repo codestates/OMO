@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Mainpage.js';
+import './KakaoLogin';
 import { Button, LoginThemeBtn, SocialLoginBtn } from '../components/Button';
 import { SocialLoginContainer } from '../components/Signupinput';
 import { Message, Errormessage } from '../components/Message';
@@ -40,7 +41,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       userId,
       password: e.target.value
     });
-  }
+  };
 
   const getLoginUserInfo = () => {
     const { userId, password } = userInfo;
@@ -69,6 +70,11 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       .catch((e) => console.log(e));
   };
 
+  const kakaoLoginHandler = () => {
+    const kakaoLoginUrl = process.env.REACT_APP_KAKAO_LOGIN_URI;
+    window.location.assign(kakaoLoginUrl);
+  };
+
   return (
     <div>
       <ModalBackground>
@@ -81,14 +87,16 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
             <LoginThemeBtn onClick={getLoginUserInfo}>
               로그인
             </LoginThemeBtn>
+          <SocialLoginContainer>
+            {/* <SocialLoginBtn onClick={kakaoLoginHandler}> */}
+            <img src={kakaologin} width='67%' onClick={kakaoLoginHandler} />
+            {/* </SocialLoginBtn> */}
+          </SocialLoginContainer>
             <Message>아직 아이디가 없으신가요? 👇</Message>
             <LoginThemeBtn>
-              <Link to='./signup'>회원가입</Link>
+              <Link to='./signup' style={{ color: 'inherit', textDecoration: 'none' }}>회원가입</Link>
               </LoginThemeBtn>
           </InputContainer>
-          <SocialLoginContainer>
-            <img src={kakaologin} width='60%' />
-          </SocialLoginContainer>
         </LoginContainer>
       </ModalBackground>
     </div>

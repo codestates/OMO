@@ -55,8 +55,8 @@ overflow: hidden;
 `;
 
 export const LoginThemeBtn = styled.button`  // 로그인 페이지 버튼 테마
-  border-color: #4D94E6;
   background: #4D94E6;
+  border: none;
   color: white;
   width: 60%;
   height: 40px;
@@ -67,7 +67,6 @@ export const LoginThemeBtn = styled.button`  // 로그인 페이지 버튼 테�
   margin: 10px;
   padding: 9px 12px;
   border-radius: 2px;
-  box-sizing: border-box;
 `;
 
 export const SocialLoginBtn = styled.button`
