@@ -32,14 +32,14 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
-    .then(() => {
-      queryInterface.addColumn('todolists', 'user_id', {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        OnDelete: 'cascade',
-        references: { model: 'users', key: 'id'}
+      .then(() => {
+        queryInterface.addColumn('todolists', 'user_id', {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          OnDelete: 'cascade',
+          references: { model: 'users', key: 'id' }
+        });
       });
-    })
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('todolists');

@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The models/index file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
     }
-  };
+  }
   monthly_achievement.init({
     month: DataTypes.STRING,
     monthlyAchievementRatio: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'monthly_achievement',
+    modelName: 'monthly_achievement'
   });
   return monthly_achievement;
 };

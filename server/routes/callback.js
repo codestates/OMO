@@ -9,7 +9,6 @@
 const router = require('express').Router();
 const controller = require('../controllers/callback');
 
-router.get('/callback', controller.callback); // 로그인
+router.get('/kakao', controller.callback); // 로그인
 
 module.exports = router;
-
