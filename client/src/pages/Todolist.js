@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import { BsPlusLg } from 'react-icons/bs';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Selectcolor } from '../components/Selectcolor';
