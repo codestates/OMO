@@ -31,7 +31,6 @@ export default function App () {
     isAuthenticated();
   }, []);
 
-
   return (
     <div>
       <Switch>
@@ -53,11 +52,13 @@ export default function App () {
         </Route>
         <Route path='/'>
           {/* props 전달 되는지 확인 필요 */}
-          {isLogin ? <Redirect to={{ 
-            pathname: '/mainpage/todolist',
-            state: {from: userInfo}
-            }} 
-            /> : <Redirect to='/login' />}
+          {true
+            ? <Redirect to={{
+              pathname: '/mainpage',
+              state: { from: userInfo }
+            }}
+              />
+            : <Redirect to='/login' />}
         </Route>
       </Switch>
     </div>

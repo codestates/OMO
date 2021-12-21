@@ -6,6 +6,7 @@ import './KakaoLogin';
 import { Button, LoginThemeBtn, SocialLoginBtn } from '../components/Button';
 import { SocialLoginContainer } from '../components/Signupinput';
 import { Message, Errormessage } from '../components/Message';
+
 import kakaologin from '../asset/images/kakao_login_medium_wide.png';
 import { 
   ModalBackground,
@@ -27,8 +28,8 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
   const [errorMessage, setErrorMessage] = useState(''); // 에러 메세지 전달
 
   const handleInputId = (e) => {
-    const {userId, password} = userInfo;
-    
+    const { userId, password } = userInfo;
+
     setUserInfo({
       userId: e.target.value,
       password
@@ -36,7 +37,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
   };
 
   const handleInputPW = (e) => {
-    const {userId, password} = userInfo;
+    const { userId, password } = userInfo;
     setUserInfo({
       userId,
       password: e.target.value
@@ -48,8 +49,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
     if (userId === '' || password === '') {
       setErrorMessage('이메일과 비밀번호를 확인하세요'); // 에러 상태 함수
       return;
-    } 
-    
+    }
 
     axios
       .post(
@@ -101,4 +101,4 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       </ModalBackground>
     </div>
   );
-};
+}

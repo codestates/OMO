@@ -96,26 +96,3 @@ SignOutBtn.defaultProps = {
 };
 
 
-const theme = {
-  width: '100px',
-  height: '30px'
-};
-
-
-export const UserInfoModify = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button>회원 정보 수정</Button>
-      <SignOutBtn>회원 탈퇴</SignOutBtn>
-    </ThemeProvider>
-  );
-};
-
-export const ExButton = () => {
-  return (
-    <div>
-      <Button theme={theme}>로그인</Button>
-      <SignOutBtn>로그아웃</SignOutBtn>
-    </div>
-  );
-};

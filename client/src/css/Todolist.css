@@ -36,7 +36,6 @@
   display: flex;
 }
 .todolistsort {
-  display: flex;
   background-color: whitesmoke;
   border: 1px solid grey;
   border-left: 4px solid black;
