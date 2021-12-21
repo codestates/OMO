@@ -1,11 +1,11 @@
 // const getRandomNumber = (min, max) => {
 //     return parseInt(Math.random() * (Number(max) - Number(min) + 2));
 //   };
-  
+
 //   const getParsedDate = (createdAt) => {
 //     return new Date(createdAt).toLocaleDateString('ko-KR');
 //   }
-  
+
 const dummySource = [
   {
     id: '1',
@@ -27,7 +27,7 @@ const dummySource = [
     name: 'name3',
     createdAt: new Date(),
     updatedAt: new Date()
-  },
+  }
 ];
 
 module.exports = { dummySource };
