@@ -74,7 +74,7 @@ export const Tag = () => {
             </li>
           ))}
         </ul>
-        <input className='tag-input' type='text' onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)} placeholder='Press enter to add tags' />
+        <input className='tag-input' type='text' onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)} placeholder=' add tags' />
       </TagsInput>
     </>
   );

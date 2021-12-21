@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
@@ -8,14 +8,7 @@ import Mypage from './Mypage';
 import Achievement from './Achievement';
 import '../css/Mainpage.css';
 
-export default function Mainpage () {
-  // const [pageTurning, setPageTurning] = useState('todolist');
-
-  // function pageTurningandler (page) {
-  //   setPageTurning(page)
-  //   console.log(page)
-  // }
-
+export default function Mainpage ({ userInfo }) {
   return (
     <div className='page'>
       <BrowserRouter>
@@ -25,18 +18,17 @@ export default function Mainpage () {
           </div>
           <section className='content'>
             <Switch>
-              <Route path='/mainpage/todolist'>
-                <Todolist />
+              <Route exact path='/mainpage'>
+                <Todolist userInfo={userInfo} />
               </Route>
-              <Route exact path='/mainpage/achievement'>
-                <Achievement />
+              <Route path='/mainpage/achievement'>
+                <Achievement userInfo={userInfo} />
               </Route>
-              <Route exact path='/mainpage/mypage'>
-                <Mypage />
+              <Route path='/mainpage/mypage'>
+                <Mypage userInfo={userInfo} />
               </Route>
             </Switch>
           </section>
-
         </div>
         <div className='footer'>
           <Footer />

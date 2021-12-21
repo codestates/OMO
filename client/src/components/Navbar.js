@@ -13,17 +13,16 @@ const Navbar = () => {
       <Link to='/mainpage/todolist'>
         <ImList className='icon' />
       </Link>
-      <Link to='/mainpage/achievement'>
+      <Link exact to='/mainpage/achievement'>
         <BsTrophyFill className='icon' />
       </Link>
-      <Link to='/mainpage/mypage'>
+      <Link exact to='/mainpage/mypage'>
         <FaUserCircle className='icon' />
       </Link>
       <div className='logouticon'>
         <GrLogout className='logout' />
       </div>
     </section>
-
   );
 };
 

@@ -5,7 +5,7 @@ import './Mainpage.js';
 import { Button, SocialLoginBtn } from '../components/Button';
 import { SocialLoginContainer } from '../components/Signupinput';
 import { Message, Errormessage } from '../components/Message';
-import { 
+import {
   ModalBackground,
   LoginContainer,
   CloseButton,
@@ -26,8 +26,8 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
   const [errorMessage, setErrorMessage] = useState(''); // 에러 메세지 전달
 
   const handleInputId = (e) => {
-    const {userId, password} = userInfo;
-    
+    const { userId, password } = userInfo;
+
     setUserInfo({
       userId: e.target.value,
       password
@@ -35,24 +35,23 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
   };
 
   const handleInputPW = (e) => {
-    const {userId, password} = userInfo;
+    const { userId, password } = userInfo;
     setUserInfo({
       userId,
       password: e.target.value
     });
-  }
+  };
 
   const getLoginUserInfo = () => {
     const { userId, password } = userInfo;
     if (userId === '' || password === '') {
       setErrorMessage('이메일과 비밀번호를 확인하세요'); // 에러 상태 함수
       return;
-    } 
-    
+    }
 
     axios
       .post(
-        'https://localhost:4000/user/login',
+        'http://localhost:4000/user/login',
         {
           userId,
           password
@@ -71,32 +70,31 @@ export default function Login ({ isLogin, modalHandleLogin, handleLogin, handleR
 
   return (
     <div>
-    {
-      modalHandleLogin ?
-      <ModalBackground>
-        <LoginContainer>
-          <CloseButton>x</CloseButton>
-          <LoginTitle>OMO 로그인</LoginTitle>
-          <InputContainer>
-            <InputId onChange={handleInputId}></InputId>
-            <InputPW onChange={handleInputPW}></InputPW>
-            <Errormessage>{errorMessage}</Errormessage>
-            <Button onClick={getLoginUserInfo}>
-              로그인
-            </Button>
-            <Message>아직 아이디가 없으신가요? 👇</Message>
-            <Button>
-              <Link to='./signup'>회원가입</Link>
+      {
+      modalHandleLogin
+        ? <ModalBackground>
+          <LoginContainer>
+            <CloseButton>x</CloseButton>
+            <LoginTitle>OMO 로그인</LoginTitle>
+            <InputContainer>
+              <InputId onChange={handleInputId} />
+              <InputPW onChange={handleInputPW} />
+              <Errormessage>{errorMessage}</Errormessage>
+              <Button onClick={getLoginUserInfo}>
+                로그인
               </Button>
-          </InputContainer>
-          <SocialLoginContainer>
-            <SocialLoginBtn>kakao</SocialLoginBtn>
-          </SocialLoginContainer>
-        </LoginContainer>
-      </ModalBackground>
-      :
-      null
+              <Message>아직 아이디가 없으신가요? 👇</Message>
+              <Button>
+                <Link to='./signup'>회원가입</Link>
+              </Button>
+            </InputContainer>
+            <SocialLoginContainer>
+              <SocialLoginBtn>kakao</SocialLoginBtn>
+            </SocialLoginContainer>
+          </LoginContainer>
+        </ModalBackground>
+        : null
     }
     </div>
   );
-};
+}

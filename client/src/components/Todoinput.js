@@ -31,13 +31,57 @@ border-style: none;
 height: 30px;
 width: 30px;
 `;
-export function Todoinput ({ userInfo }) {
-  const [todoValue, setTodoValue] = useState('');
 
-  // 엔터키 눌렀을 때 발생하는 이벤트(인데 외 않됢? 빡치게)
-  const keyPressHandler = (e) => {
-    setTodoValue(e.target.value);
-    console.log(todoValue);
+export const Calender = styled.input.attrs(props => ({
+  type: 'date'
+}))`
+widgh: 3rem;
+height: 2rem
+
+`;
+const black = {
+  main: '#1A1A1A'
+};
+const red = {
+  main: '#DA0063'
+};
+const yellow = {
+  main: '#FAC710'
+};
+const green = {
+  main: '#0CA789'
+};
+const blue = {
+  main: '#2D9BF0'
+};
+const deepblue = {
+  main: '#414BB2'
+};
+
+export function Todoinput ({ userInfo }) {
+  const [todolist, setTodolist] = useState({
+    content: '',
+    endtime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+    color: black,
+    tag: []
+  });
+  const { content, endtime, color, tag } = todolist;
+  // 오늘 날짜 찾는 함수는 미작성상태 dateValue 초기값은 일단 '' 처리했음
+  const contentInputHandler = (e) => {
+    setTodolist({
+      content: e.target.value,
+      endtime,
+      color,
+      tag
+    });
+  };
+  const endtimeInputHandler = (e) => {
+    setTodolist({
+      content,
+      endtime: e.target.value,
+      color,
+      tag
+    });
   };
   const keyPressEnter = (e) => {
     if (e.key === 'Enter') {
@@ -46,33 +90,43 @@ export function Todoinput ({ userInfo }) {
   };
 
   const btnClickEventHandler = () => {
+    const { content, endtime, color, tag } = todolist;
     console.log('버튼클릭');
-    setTodoValue('');
-    // axios 요청 후에 todoinput value 초기화
-    if (todoValue.length === 0) {
 
+    // axios 요청 후에 todoinput value 초기화
+    if (todolist.content.length === 0) return;
+    else {
+      axios.post('http://localhost:4000/todo/{:userId}', {
+        data: {
+          content: content,
+          endtime: endtime,
+          color: color,
+          tag: tag
+        }
+      },
+      {
+        headers: { 'Contnet-Type': 'application/json' }
+      })
+        .then((data) => {
+          setTodolist({
+            content: '',
+            endtime,
+            color,
+            tag
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-    // else if (todoValue.length !== 0) {
-    //   axios.post('http://localhost:4000/todo/{:userId}', {
-    //     "data" : {
-    //         "content" : userInfo.todolist.content,
-    //         "endtime" : userInfo.todolist.endtime,
-    //         "color" : userInfo.todolist.color,
-    //         "tag" :  userInfo.todolist.tag
-    //     }
-    //   },
-    //   {
-    //     headers: {'Contnet-Type': 'application/json'},
-    //   }
-    //   )
-    // }
   };
 
   return (
     <TodoInputContainer>
-      <TodoInputt onKeyPress={keyPressEnter} onChange={keyPressHandler} value={todoValue} />
+      <TodoInputt onKeyPress={keyPressEnter} onChange={contentInputHandler} value={todolist.content} />
       <PlusBTN onClick={btnClickEventHandler}>Add</PlusBTN>
       <Selectcolor />
+      <Calender value={todolist.endtime} onChange={endtimeInputHandler} />
     </TodoInputContainer>
   );
 }

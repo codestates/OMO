@@ -1,33 +1,62 @@
+import Axios from 'axios';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
-export const TodoListContainer = styled.ul`
-
-`;
-export const TodoListLi = styled.li.attrs(props => ({
-
-}))`
-
-`;
-export const TodoDate = styled.div`
-color: red;
-`;
-export const TodoChecked = styled.input.attrs(props => ({
-  // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
-  type: 'checkbox',
-  value: 'checked'
-}))`
+// 전체 TodoList 컨테이너 div
+export const TodoListContainer = styled.div`
 
 `;
 
-export const TodoList = styled.div`
-height: 2rem;
+// Check 되지 않은 TodoList 목록
+export const UnCheckTodoListContainer = styled.ul`
+
+`;
+export const UncheckTodoListContent = styled.div`
 background-color: whitesmoke;
-border-radius: 4px;
 border: 1px solid ${props => props.theme.main};
 border-left: 4px solid ${props => props.theme.main};
 `;
-TodoList.defaultProps = {
+
+export const UncheckTodoListIsChecked = styled.input.attrs({
+  checked: false
+})`
+
+`;
+export const UncheckTodoListEndtime = styled.div`
+
+`;
+
+export const UncheckTodoListTags = styled.div`
+
+`;
+// Check 된 TodoList 목록
+export const CheckTodoListContainer = styled.ul`
+
+`;
+
+export const CheckTodoListContent = styled.div`
+background-color: whitesmoke;
+border: 1px solid ${props => props.theme.main};
+border-left: 4px solid ${props => props.theme.main};
+`;
+export const CheckTodoListIsChecked = styled.divinput.attrs({
+  checked: true
+})`
+
+`;
+export const CheckTodoListEndtime = styled.div`
+
+`;
+export const CheckTodoListTags = styled.div`
+
+`;
+
+CheckTodoListContent.defaultProps = {
+  theme: {
+    main: '#1A1A1A'
+  }
+};
+UncheckTodoListContent.defaultProps = {
   theme: {
     main: '#1A1A1A'
   }
@@ -50,23 +79,64 @@ const deepblue = {
   main: '#414BB2'
 };
 
-export function Todolist ({ userInfo }) {
+export function Todolist () {
   const [isChecked, setIsChecked] = useState(false);
 
   const checkedItemHandler = (e) => {
     setIsChecked(!isChecked);
+    getTodolistData();
+    console.log(isChecked);
     // 만약 안되면 setIsChecked(e.target.checked)로 고쳐볼 것
   };
+  const checkedTodoList = [];
+  const unCheckedTodoList = [];
 
-  // return (
-  //   <TodoListContainer>
-  //     {/* map으로 불러오기 */}
-  //     {userInfo.todolist.map((Todolist) => {
-  //       <TodoListLi />
-  //     })}
-  //     <TodoChecked type='checkbox' checked={isChecked} onChange={checkedItemHandler}>{userInfo.checked}</TodoChecked>
-  //     <TodoList>`{userInfo.Todolist}`</TodoList>
-  //     <TodoDate>{userInfo.tododate}</TodoDate>
-  //   </TodoListContainer>
-  // )
+  Axios.get('http://localhost:4000/todo/{:userId}')
+    .then((data) => {
+      console.log(data);
+      // 받아오는 data 확인 필요
+      for (let i = 0; i < data.data.length; i++) {
+        if (data.data[i].checkbox === false) {
+          checkedTodoList.push(data.data[i]);
+        } else {
+          unCheckedTodoList.push(data.data[i]);
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return (
+    <TodoListContainer>
+      {checkedTodoList.map((el) => {
+        return (
+          <UnCheckTodoListContainer>
+            <ThemeProvider theme={el.color}>
+              <UncheckTodoListContent>{el.content}</UncheckTodoListContent>
+            </ThemeProvider>
+            <UncheckTodoListIsChecked checked={isChecked} onChange={checkedItemHandler} />
+            <UncheckTodoListEndtime>{el.endtime}</UncheckTodoListEndtime>
+            {el.tags.map((tags) => {
+              return <UncheckTodoListTags>{tags}</UncheckTodoListTags>;
+            })}
+          </UnCheckTodoListContainer>
+        );
+      })}
+      {unCheckedTodoList.map((el) => {
+        return (
+          <CheckTodoListContainer>
+            <ThemeProvider theme={el.color}>
+              <CheckTodoListContent>{el.content}</CheckTodoListContent>
+            </ThemeProvider>
+            <CheckTodoListIsChecked checked={isChecked} onChange={checkedItemHandler} />
+            <CheckTodoListEndtime>{el.endtime}</CheckTodoListEndtime>
+            {el.tags.map((tags) => {
+              return <CheckTodoListTags>{tags}</CheckTodoListTags>;
+            })}
+          </CheckTodoListContainer>
+        );
+      })}
+    </TodoListContainer>
+  );
 }

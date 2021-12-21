@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function App () {
   const [isLogin, setIsLogin] = useState(false);
-  const [isOpenSignup, setIsOpenSignup] = useState(false);  // modal로 연결
+  const [isOpenSignup, setIsOpenSignup] = useState(false); // modal로 연결
   const [isOpenLogin, setIsOpenLogin] = useState(false); // modal로 연결
   const [userInfo, setUserInfo] = useState(null);
   const history = useHistory();
@@ -39,8 +39,6 @@ export default function App () {
     isAuthenticated();
   }, []);
 
-
-
   return (
     <div>
       <Switch>
@@ -61,11 +59,13 @@ export default function App () {
         </Route>
         <Route path='/'>
           {/* props 전달 되는지 확인 필요 */}
-          {isLogin ? <Redirect to={{ 
-            pathname: '/mainpage/todolist',
-            state: {from: userInfo}
-            }} 
-            /> : <Redirect to='/login' />}
+          {true
+            ? <Redirect to={{
+              pathname: '/mainpage',
+              state: { from: userInfo }
+            }}
+              />
+            : <Redirect to='/login' />}
         </Route>
       </Switch>
     </div>

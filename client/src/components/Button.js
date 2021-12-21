@@ -3,12 +3,12 @@ import styled, { ThemeProvider } from 'styled-components';
 
 export const ButtonContainer = styled.div`
   margin: 0px;
-  boader: 1 solid grey;
+  border: 1 solid grey;
 `;
 
 export const Button = styled.button`
-width:  ${props => props.theme.width} || 80px;
-height:  ${props => props.theme.height} || 30px;
+width:  ${props => props.theme.width};
+height:  ${props => props.theme.height};
 margin: 0px;
 border-style: none;
 border-radius: 10px;
@@ -30,8 +30,8 @@ overflow: hidden;
 }
 `;
 export const SignOutBtn = styled.button`
-width:  ${props => props.theme.width} || 80px;
-height:  ${props => props.theme.height} || 30px;
+width:  ${props => props.theme.width};
+height:  ${props => props.theme.height};
 margin: 0px;
 border-style: none;
 border-radius: 10px;
@@ -78,25 +78,7 @@ SignOutBtn.defaultProps = {
   }
 };
 
-const theme = {
+const boxtheme = {
   width: '100px',
   height: '30px'
-};
-
-export const UserInfoModify = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button>회원 정보 수정</Button>
-      <SignOutBtn>회원 탈퇴</SignOutBtn>
-    </ThemeProvider>
-  );
-};
-
-export const ExButton = () => {
-  return (
-    <div>
-      <Button>로그인</Button>
-      <SignOutBtn>로그아웃</SignOutBtn>
-    </div>
-  );
 };

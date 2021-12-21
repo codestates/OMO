@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import { BsPlusLg } from 'react-icons/bs';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Selectcolor } from '../components/Selectcolor';
@@ -7,7 +6,7 @@ import { Todoinput } from '../components/Todoinput';
 import { Tag } from '../components/Tag';
 import '../css/Todolist.css';
 
-export default function Todolist () {
+export default function Todolist ({ userInfo }) {
   const [startDate, setStartDate] = useState(new Date());
 
   const createTodo = () => {
@@ -22,16 +21,9 @@ export default function Todolist () {
 
   return (
     <div className='todocontainer'>
-      <div className='todoinput'>
-        <Todoinput />
-        <Tag />
-      </div>
-      <div className='todolist'>
-        {/* <Todolist/> */}
-        <FaTrashAlt />
-        {/* tag 검색 기능 */}
-        <div className='taglist'>#tag</div>
-      </div>
+      <Todoinput />
+      <Todolist />
+      <FaTrashAlt />
     </div>
   );
 }
