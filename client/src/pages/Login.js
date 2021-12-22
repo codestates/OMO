@@ -23,7 +23,8 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     userId: '',
-    password: ''
+    password: '',
+    id: ''
   });
   const [errorMessage, setErrorMessage] = useState(''); // 에러 메세지 전달
 
@@ -63,8 +64,9 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       }
     )
       .then((res) => {
+        console.log('로그인 요청 성공했음')
+        handleLogin();
         handleResponseSuccess();
-        getLoginUserInfo();
         history.push('/mainpage/todolist');
       })
       .catch((e) => console.log(e));
@@ -85,7 +87,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
             <InputPW onChange={handleInputPW}></InputPW>
             <Errormessage>{errorMessage}</Errormessage>
             <LoginThemeBtn onClick={getLoginUserInfo}>
-              로그인
+              로그인{console.log('로그인 버튼 클릭')}
             </LoginThemeBtn>
           <SocialLoginContainer>
             {/* <SocialLoginBtn onClick={kakaoLoginHandler}> */}

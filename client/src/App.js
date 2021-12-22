@@ -9,7 +9,11 @@ import KakaoLogin from './pages/KakaoLogin';
 
 export default function App () {
   const [isLogin, setIsLogin] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState({
+    username: '',
+    userId: '',
+    id: '1'
+  });
   const history = useHistory();
 
   const isAuthenticated = () => {
@@ -41,7 +45,7 @@ export default function App () {
             handleResponseSuccess={handleResponseSuccess}
           />
         </Route>
-        <Route exact path='/signup'>
+        <Route path='/signup'>
           <Signup />
         </Route>
         <Route exact path='/mainpage'>
@@ -52,7 +56,7 @@ export default function App () {
         </Route>
         <Route path='/'>
           {/* props 전달 되는지 확인 필요 */}
-          {true
+          {isLogin
             ? <Redirect to={{
               pathname: '/mainpage',
               state: { from: userInfo }

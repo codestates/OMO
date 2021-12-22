@@ -9,7 +9,7 @@ import '../css/Mainpage.css';
 
 
 export default function Mainpage ({ userInfo }) {
-
+  
   return (
     <div className='page'>
       <BrowserRouter>
