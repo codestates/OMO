@@ -11,6 +11,7 @@ export default function Mypage ({ userInfo }) {
 
   const [modifyUserInfoModal, setModifyUserInfoModal] = useState(false);
   const [viewUserInfo, setViewUserInfo] = useState({
+    id: userInfo.id,
     userId: userInfo.userId,
     userName: userInfo.userName,
     createdAt: userInfo.createdAt
@@ -27,7 +28,7 @@ export default function Mypage ({ userInfo }) {
   const modifyUserInfoReqHandler = () => {
     const { username, password } = viewUserInfo;
     { /* inputdata에서 받아서 처리해야함.. 일단 에러나는거 해소용으로 작성함. */ }
-    axios.put('http://localhost:4000/myinfo/{:userId}', {
+    axios.put(`http://localhost:4000/todo/${userInfo.id}`, {
       username,
       password
     },
@@ -44,7 +45,8 @@ export default function Mypage ({ userInfo }) {
 
   // 회원탈퇴 함수
   const signOutReqHandler = () => {
-    axios.delete('http://localhost:4000/user/{:userId}')
+    console.log(userInfo)
+    axios.delete(`http://localhost:4000/todo/${userInfo.id}`)
       .then((data) => {
         console.log('회원 탈퇴 처리 되었습니다');
       })
@@ -56,7 +58,7 @@ export default function Mypage ({ userInfo }) {
     <div>
       <Userinfo viewUserInfo={viewUserInfo} />      
       {modifyUserInfoModal ? <UserInfoModifyModal modifyUserInfoReqHandler={modifyUserInfoReqHandler} modifyUserInfoModalHandler={modifyUserInfoModalHandler}/> : null}
-      {isSignOutModal ? <SignOutModal/> : null}
+      {isSignOutModal ? <SignOutModal signOutReqHandler={signOutReqHandler} signOutModalHandler={signOutModalHandler}/> : null}
       <Button onClick={modifyUserInfoModalHandler}>회원 정보 수정</Button>
       <SignOutBtn onClick={signOutModalHandler}>회원 탈퇴</SignOutBtn>
     </div>

@@ -26,7 +26,7 @@ export const ModalContent = styled.div`
 `
 export const ModifyUserName = styled.input.attrs({
   type: 'text',
-  placeholder: "username"
+  placeholder: "Username"
 })`
 margin-top: 10px;
 border-radius: 2px;
@@ -38,7 +38,8 @@ outline: none;
 box-sizing: border-box;
 `
 export const ModifyUserPassword = styled.input.attrs({
-  type: 'password'
+  type: 'password',
+  placeholder: "Password"
 })`
 margin-top: 10px;
 border-radius: 2px;
@@ -50,7 +51,8 @@ outline: none;
 box-sizing: border-box;
 `
 export const ConfirmPassword = styled.input.attrs({
-  type: 'password'
+  type: 'password',
+  placeholder: "Password check"
 })`
 margin-top: 10px;
 border-radius: 2px;
@@ -64,13 +66,20 @@ box-sizing: border-box;
 export const ViewErrorMessage = styled.div`
 
 `
-export const SignOutModal = () => {
-
+export const SignOutModal = ({signOutReqHandler, signOutModalHandler}) => {
+  const [signOut, setSignOut] = useState('')
 
   return (
-    <div>SignOutModal</div>
+    <ModalBackDrop>
+      <ModalContainer>
+        <Button onClick={signOutReqHandler}/>
+        <SignOutBtn onClick={signOutModalHandler}/>
+      </ModalContainer>
+    </ModalBackDrop>
   )
 }
+
+
 
 export const UserInfoModifyModal = ({ modifyUserInfoReqHandler, modifyUserInfoModalHandler }) => {
   const [errorMessage, setErrorMessage] = useState('')
@@ -95,8 +104,8 @@ export const UserInfoModifyModal = ({ modifyUserInfoReqHandler, modifyUserInfoMo
   }
 
   return (
-    <ModalContainer>
-      <ModalBackDrop> 
+    <ModalBackDrop> 
+      <ModalContainer>
         <ModalContent>
           <ModifyUserName value={modifyName} onChange={modifyUserNameHandler}></ModifyUserName>
           <ModifyUserPassword value={modifyPassword} onChange={handlePWCheck}/>
@@ -105,7 +114,7 @@ export const UserInfoModifyModal = ({ modifyUserInfoReqHandler, modifyUserInfoMo
           <Button onClick={modifyUserInfoReqHandler}/>
           <SignOutBtn onClick={modifyUserInfoModalHandler}/>
         </ModalContent>
-      </ModalBackDrop>
-    </ModalContainer>
+      </ModalContainer>
+    </ModalBackDrop>
   )
 }

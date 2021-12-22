@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Selectcolor } from '../components/Selectcolor';
-import { Tag } from '../components/Tag';
 
 axios.defaults.withCredentials = true;
 
@@ -31,17 +30,6 @@ export const TagsInput = styled.div`
       font-size: 14px;
       list-style: none;
       margin: 0 8px 8px 0;
-
-      > .tag-close-icon {
-        display: block;
-        width: 16px;
-        height: 16px;
-        text-align: center;
-        font-size: 10px;
-        margin-left: 1px;
-        color: #000000;
-        cursor: pointer;
-      }
     }
   }
   > input {
@@ -74,6 +62,7 @@ border-style: none;
 margin: ${props => props.size};
 padding: ${props => props.size};
 width: 20rem;
+height: 8px;
 transition: all 0.1s ease-in-out;
 &:hover {
   background: #E3E3E3;
@@ -89,9 +78,8 @@ width: 30px;
 export const Calender = styled.input.attrs(props => ({
   type: 'date'
 }))`
-widgh: 3rem;
-height: 2rem
-
+width: 3rem;
+height: 2rem;
 `;
 const black = {
   main: '#1A1A1A'

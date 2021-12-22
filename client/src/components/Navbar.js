@@ -7,6 +7,7 @@ import { ImList } from 'react-icons/im';
 import { GrLogout } from 'react-icons/gr';
 
 const Navbar = () => {
+  
   return (
     // https://react-icons.github.io/react-icons 참고
     <section className='navbar'>
@@ -19,9 +20,8 @@ const Navbar = () => {
       <Link to='/mainpage/mypage'>
         <FaUserCircle className='icon' />
       </Link>
-      <div className='logouticon'>
-        <GrLogout className='logout' />
-      </div>
+      <GrLogout className='icon logout' />
+
     </section>
   );
 };
