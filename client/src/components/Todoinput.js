@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Selectcolor } from '../components/Selectcolor';
-import { Tag } from '../components/Tag';
 
 axios.defaults.withCredentials = true;
-
 
 export const TagsInput = styled.div`
 
@@ -121,7 +119,9 @@ export const Calender = styled.input.attrs(props => ({
 width: 15%;
 height: 30px;
 margin: 5px;
-padding: 10px;
+
+padding: 25px;
+
 `;
 
 

@@ -23,6 +23,8 @@ const Navbar = ({handleLogout}) => {
     })
   }
 
+const Navbar = () => {
+
   return (
     // https://react-icons.github.io/react-icons 참고
     <section className='navbar'>

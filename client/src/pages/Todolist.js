@@ -4,7 +4,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { Selectcolor } from '../components/Selectcolor';
 import { Todoinput } from '../components/Todoinput';
 import { Todolists } from '../components/Todolists';
-import { Tag } from '../components/Tag';
+
 import '../css/Todolist.css';
 
 export default function Todolist ({ userInfo }) {
