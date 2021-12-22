@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { dummyTodoLists } from './Dummytodolists'
 import { FaTrashAlt } from 'react-icons/fa';
+import UncheckedTodo from './uncheckedTodo';
 
 // 전체 TodoList 컨테이너 div
 export const TodoListContainer = styled.div`
@@ -112,58 +113,33 @@ export function Todolists ({userInfo}) {
   const checkedTodoList = [];
   const unCheckedTodoList = [];
 
-  
-  for (let i = 0; i < dummyTodoLists.data.length; i++) {
-    console.log(i)
-    if (dummyTodoLists.data[i].checkbox) {
-      checkedTodoList.push(dummyTodoLists.data[i]);
-    } else {
-      unCheckedTodoList.push(dummyTodoLists.data[i]);
+
+
+  const isChecked = (argu) => {
+    for(let n = 0; n < dummyTodoLists.data.length; n++ ) {
+      if(dummyTodoLists.data[n]["id"] === argu) {
+        dummyTodoLists.data[n]["checkbox"] = !dummyTodoLists.data[n]["checkbox"]
+      }
     }
+    // console.log(dummyTodoLists)
+    // e.target.checked = !e.target.checked
   }
-  console.log(checkedTodoList,checkedTodoList)
+
+  
+  // for (let i = 0; i < dummyTodoLists.data.length; i++) {
+  //   if (dummyTodoLists.data[i].checkbox) {
+  //     checkedTodoList.push(dummyTodoLists.data[i]);
+  //   } else {
+  //     unCheckedTodoList.push(dummyTodoLists.data[i]);
+  //   }
+  // }
 
   return (
     <TodoListContainer>
-      {unCheckedTodoList.map((el) => {
+      {dummyTodoLists.data.map((dummy) => {
         return (
-          <UnCheckTodoListContainer>
-            <span>
-              <UncheckTodoListIsChecked checked={false} onChange={checkedHandler} />
-              <ThemeProvider theme={red}>
-                <UncheckTodoListContent>{el.content}</UncheckTodoListContent>
-              </ThemeProvider>
-            </span>
-            <span>
-              <UncheckTodoListEndtime>{el.endtime}</UncheckTodoListEndtime>
-              {el.tags.map((tags) => {
-                return <UncheckTodoListTags>{tags}</UncheckTodoListTags>;
-              })}
-              <FaTrashAlt/>
-            </span>
-            
-          </UnCheckTodoListContainer>
-        );
-      })}
-      {checkedTodoList.map((el) => {
-        return (
-          <CheckTodoListContainer>
-            <span>
-              <CheckTodoListIsChecked checked={true} onChange={(e) => checkedHandler(e)} />
-              <ThemeProvider theme={blue}>
-                <CheckTodoListContent>{el.content}</CheckTodoListContent>
-              </ThemeProvider>
-            </span>
-            <span>
-              <CheckTodoListEndtime>{el.endtime}</CheckTodoListEndtime>
-              {el.tags.map((tags) => {
-                return <CheckTodoListTags>{tags}</CheckTodoListTags>;
-              })}
-              <FaTrashAlt/>
-            </span>
-          </CheckTodoListContainer>
-        );
-      })}
+          <UncheckedTodo dummy={dummy} isChecked={isChecked}/>
+      )})}
     </TodoListContainer>
   );
 }

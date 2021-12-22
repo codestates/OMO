@@ -16,6 +16,7 @@ export default function App () {
   });
   const history = useHistory();
 
+
   // const isAuthenticated = () => {
   //   axios.post('http://localhost:4000/auth') // 엔드포인트 수정 필요
   //     .then((res) => {
@@ -35,6 +36,7 @@ export default function App () {
   //   isAuthenticated();
   // }, []);
 
+
   return (
     <div>
       <Switch>
@@ -42,7 +44,9 @@ export default function App () {
           <Login
             // isLogin={isLogin}
             handleLogin={handleLogin}
+
             LoginUserInfo={setUserInfo}
+
             // handleResponseSuccess={handleResponseSuccess}
           />
         </Route>
