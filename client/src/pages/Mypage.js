@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 
 export default function Mypage ({ userInfo }) {
   const [isSignOutModal, setIsSignOutModal] = useState('false');
-  const [modifyUserInfoModal, setModifyUserInfoModal] = useState('false');
+  const [modifyUserInfoModal, setModifyUserInfoModal] = useState(false);
   const [viewUserInfo, setViewUserInfo] = useState({
     userId: userInfo.userId,
     userName: userInfo.userName,
