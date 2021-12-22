@@ -8,14 +8,14 @@ import Achievement from './Achievement';
 import '../css/Mainpage.css';
 
 
-export default function Mainpage ({ userInfo }) {
-  console.log(userInfo)
+export default function Mainpage ({ userInfo, handleLogout }) {
+  // console.log(userInfo)
   return (
     <div className='page'>
       <BrowserRouter>
         <div className='mainpage'>
           <div className='navbar'>
-            <Navbar />
+            <Navbar handleLogout={handleLogout}/>
           </div>
           <section className='content'>
             <Switch>

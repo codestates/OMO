@@ -3,12 +3,19 @@ import axios from 'axios';
 import { Button, SignOutBtn } from '../components/Button';
 import { Userinfo } from '../components/Userinfo';
 import { UserInfoModifyModal, SignOutModal } from '../components/Modal';
+import styled from 'styled-components';
 
 axios.defaults.withCredentials = true;
 
+export const MyPageContainer = styled.div`
+  display: flex;
+`;
+
+
+
+
 export default function Mypage ({ userInfo }) {
   const [isSignOutModal, setIsSignOutModal] = useState(false);
-
   const [modifyUserInfoModal, setModifyUserInfoModal] = useState(false);
   const [viewUserInfo, setViewUserInfo] = useState({
     id: userInfo.id,
@@ -16,7 +23,7 @@ export default function Mypage ({ userInfo }) {
     userName: userInfo.userName,
     createdAt: userInfo.createdAt
   });
-  console.log(userInfo)
+
   const modifyUserInfoModalHandler = () => {
     setModifyUserInfoModal(!modifyUserInfoModal)
   }

@@ -50,8 +50,8 @@ export const TagsInput = styled.div`
 export const TodoInputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 70rem;
   height: 200px;
-  width: 1000px;
   border: 1px solid grey;
 `;
 
@@ -119,7 +119,9 @@ export const Calender = styled.input.attrs(props => ({
 width: 15%;
 height: 30px;
 margin: 5px;
+
 padding: 25px;
+
 `;
 
 
