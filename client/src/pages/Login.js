@@ -19,7 +19,7 @@ import {
 
 axios.defaults.withCredentials = true;
 
-export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) {
+export default function Login ({ isLogin, handleLogin,  LoginUserInfo }) {
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     userId: '',
@@ -33,7 +33,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
 
     setUserInfo({
       userId: e.target.value,
-      password
+      password,
     });
   };
 
@@ -41,7 +41,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
     const { userId, password } = userInfo;
     setUserInfo({
       userId,
-      password: e.target.value
+      password: e.target.value,
     });
   };
 
@@ -64,9 +64,13 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       }
     )
       .then((res) => {
+        LoginUserInfo({
+          id: res.data.data.id,
+          userId: res.data.data.userId,
+          userName: res.data.data.username
+        })
         console.log('로그인 요청 성공했음')
         handleLogin();
-        handleResponseSuccess();
         history.push('/mainpage/todolist');
       })
       .catch((e) => console.log(e));

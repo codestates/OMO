@@ -12,37 +12,38 @@ export default function App () {
   const [userInfo, setUserInfo] = useState({
     username: '',
     userId: '',
-    id: '1'
+    id: ''
   });
   const history = useHistory();
 
-  const isAuthenticated = () => {
-    axios.post('http://localhost:4000/auth') // 엔드포인트 수정 필요
-      .then((res) => {
-        setUserInfo(res); // data 유형 확인 후 수정
-        setIsLogin(true);
-        history.push('/');
-      });
-  };
-  const handleResponseSuccess = () => {
-    isAuthenticated();
-  };
+  // const isAuthenticated = () => {
+  //   axios.post('http://localhost:4000/auth') // 엔드포인트 수정 필요
+  //     .then((res) => {
+  //       setUserInfo(res); // data 유형 확인 후 수정
+  //       setIsLogin(true);
+  //       history.push('/');
+  //     });
+  // };
+  // const handleResponseSuccess = () => {
+  //   isAuthenticated();
+  // };
   const handleLogin = () => {
     setIsLogin(true);
   };
-
-  useEffect(() => {
-    isAuthenticated();
-  }, []);
+  
+  // useEffect(() => {
+  //   isAuthenticated();
+  // }, []);
 
   return (
     <div>
       <Switch>
         <Route path='/login'>
           <Login
-            isLogin={isLogin}
+            // isLogin={isLogin}
             handleLogin={handleLogin}
-            handleResponseSuccess={handleResponseSuccess}
+            LoginUserInfo={setUserInfo}
+            // handleResponseSuccess={handleResponseSuccess}
           />
         </Route>
         <Route path='/signup'>

@@ -2,8 +2,62 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Selectcolor } from '../components/Selectcolor';
+import { Tag } from '../components/Tag';
 
 axios.defaults.withCredentials = true;
+
+
+export const TagsInput = styled.div`
+
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 20px;
+  width: 500px;
+  padding: 0 8px;
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 8px 0 0 0;
+    > .tag {
+      width: auto;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #50BEE6;
+      padding: 0 8px;
+      font-size: 14px;
+      list-style: none;
+      margin: 0 8px 8px 0;
+
+      > .tag-close-icon {
+        display: block;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        font-size: 10px;
+        margin-left: 1px;
+        color: #000000;
+        cursor: pointer;
+      }
+    }
+  }
+  > input {
+    flex: 1;
+    border: none;
+    height: 46px;
+    font-size: 14px;
+    padding: 4px 0 0 0;
+    :focus {
+      outline: transparent;
+    }
+  }
+  &:focus-within {
+    border: 1px solid #4000c7;
+  }
+`;
 
 export const TodoInputContainer = styled.div`
   display:flex;
@@ -65,8 +119,19 @@ export function Todoinput ({ userInfo }) {
     color: "#1A1A1A",
     tag: []
   });
+  const [tags, setTags] = useState([]);
+
+  const addTags = (event) => {
+    const filtered = tags.filter((el) => el === event.target.value);
+    if (event.target.value !== '' && filtered.length === 0) {
+      setTags([...tags, event.target.value]);
+      event.target.value = '';
+    }
+  }
+
   const { content, endtime, color, tag } = todolist;
   // 오늘 날짜 찾는 함수는 미작성상태 dateValue 초기값은 일단 '' 처리했음
+
   const contentInputHandler = (e) => {
     setTodolist({
       content: e.target.value,
@@ -92,7 +157,7 @@ export function Todoinput ({ userInfo }) {
   const btnClickEventHandler = () => {
     const { content, endtime, color, tag } = todolist;
     console.log('버튼클릭');
-
+    
     // axios 요청 후에 todoinput value 초기화
     if (todolist.content.length === 0) return;
     else {
@@ -108,11 +173,12 @@ export function Todoinput ({ userInfo }) {
       //   headers: { 'Content-Type': 'application/json' }}
         )
         .then((data) => {
+          setTags([])
           setTodolist({
             content: '',
             endtime,
             color,
-            tag
+            tag: []
           });
         })
         .catch((err) => {
@@ -127,6 +193,16 @@ export function Todoinput ({ userInfo }) {
       <PlusBTN onClick={btnClickEventHandler}>Add</PlusBTN>
       <Selectcolor />
       <Calender value={todolist.endtime} onChange={endtimeInputHandler} />
+      <TagsInput>
+        <ul id='tags'>
+          {tags.map((tag, index) => (
+            <li key={index} className='tag'>
+              <span className='tag-title'>{tag}</span>
+            </li>
+          ))}
+        </ul>
+        <input className='tag-input' type='text' onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)} placeholder=' add tags' />
+      </TagsInput>
     </TodoInputContainer>
   );
 }
