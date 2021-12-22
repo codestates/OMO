@@ -19,6 +19,7 @@ module.exports = {
           userData.id = result.id;
           userData.userId = result.userId;
           userData.username = result.username;
+          userData.createdAt = result.createdAt;
           const Id = result.id;
         } else {
           const userPassword = result.password;
@@ -29,6 +30,7 @@ module.exports = {
           userData.id = result.id;
           userData.userId = result.userId;
           userData.username = result.username;
+          userData.createdAt = result.createdAt;
         }
         TodoModel.findAll({
           where: {
@@ -41,18 +43,17 @@ module.exports = {
             });
             userData.todolist = result;
             const data = {
-              userId: userId
+              userId: userId,
+              userPassword: password
             };
             const accessToken = jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '1d' });
             res.cookie('jwt', accessToken).status(200).json({ data: userData, message: 'ok' });
           })
           .catch(err => {
-            console.log('이거슨 찾는 것에서 에러', err);
             res.status(401).json({ message: 'failure' });
           });
       })
       .catch(err => {
-        console.log('이것은 못 찾은 에러', err);
         res.status(401).json({ message: 'failure' });
       });
   },
@@ -61,11 +62,12 @@ module.exports = {
     if (!cookie) return res.status(401).json({ message: '로그인 유저가 아닙니다.' });
     //! postman으로 cookie 확인이 조금 어려워서 아래는 이후에 진행을 할지에 대해 고민을 해봐야할 거 같습니다 ㅠㅠ
     const userInfo = jwt.verify(cookie, process.env.ACCESS_SECRET);
+    // console.log(userInfo)
     // res.json(userInfo)
     const findUser = await UserModel.findOne({
       where: {
-        name: userInfo.name,
-        password: userInfo.password
+        userId: userInfo.userId,
+        password: userInfo.userPassword
       }
     });
     if (!findUser) return res.status(401).json({ message: 'failure' });
@@ -73,7 +75,6 @@ module.exports = {
       // 로그아웃 요청이 오면은 clearCookie를 통해서 jwt라는 이름의 cookie를 삭제
       res.clearCookie('jwt').status(200).json({ message: '로그아웃 되었습니다.' });
     }
-    // res.status(200).json({ message : '로그아웃 되었습니다.'})
   },
   signup: async (req, res) => { // db response 완료
     console.log(req.body);
@@ -111,23 +112,15 @@ module.exports = {
         user_id: userId
       }
     })
-      .then((result) => {
-        console.log('todo 테이블은 삭제함', result)
+      .then(() => {
         UserModel.destroy({
           where: {
             id: userId
           }
         })
-        .then((result) => {
-          res.status(204).json({ message: '유저가 탈퇴되었습니다.' });
-          console.log('user 테이블은 삭제함', result)
+        .then(() => {
+          res.clearCookie('jwt').status(201).json({ message: '유저가 탈퇴되었습니다.' });
         })
-        .catch((error) => {
-          res.status(401).json({ message: 'failure' });
-        })
-      })
-      .catch((error) => {
-        res.status(401).json({ message: 'failure' });
       })
   }
 };

@@ -31,6 +31,11 @@ export default function App () {
   const handleLogin = () => {
     setIsLogin(true);
   };
+  const handleLogout = () => {
+    // console.log('로그아웃 실행됨', isLogin)
+    return setIsLogin(false)
+  }
+  // console.log('요거는 처음에 나오는 거', isLogin)
   
   // useEffect(() => {
   //   isAuthenticated();
@@ -54,7 +59,7 @@ export default function App () {
           <Signup />
         </Route>
         <Route exact path='/mainpage'>
-          <Mainpage userInfo={userInfo} />
+          <Mainpage userInfo={userInfo} handleLogout={handleLogout}/>
         </Route>
         <Route path='/kakaoLogin'>
           <KakaoLogin />

@@ -1,4 +1,6 @@
 const { user: UserModel } = require('../models');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   get: (req, res) => { // db response 완료 => username, id만 보낼 수 있도록 수정하기
@@ -20,7 +22,6 @@ module.exports = {
       .catch((error) => {
         res.status(404).json({ message: 'failure' });
       });
-    // res.status(200).json({ message: '유저의 정보가 조회되었습니다.' });
   },
   put: async (req, res) => { // db response 완료 => put 변경
     const userId = parseInt(req.params.userId, 10);

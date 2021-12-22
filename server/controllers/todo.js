@@ -10,7 +10,6 @@ module.exports = {
       }
     })
       .then((result) => {
-      // for(let n = 0; n < result.length; n++) console.log(result[n].dataValues)
         result.map((el) => {
           el.dataValues.tags = el.dataValues.tags.split(',');
         });
@@ -39,7 +38,6 @@ module.exports = {
           }
         })
           .then((result) => {
-          // for(let n = 0; n < result.length; n++) console.log(result[n].dataValues)
             result.map((el) => {
               el.dataValues.tags = el.dataValues.tags.split(',');
             });
@@ -116,12 +114,9 @@ module.exports = {
         const utcNow = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
         const koreaTimeDiff = 9 * 60 * 60 * 1000;
         const koreaNow = new Date(utcNow + koreaTimeDiff);
-        // const thisMonth = koreaNow.getMonth() + 1
         const today = `${koreaNow.getFullYear()}-${koreaNow.getMonth() + 1}-${koreaNow.getDate()}`;
         const undoList = [];
-        // console.log(new Date(`${today}`).getMonth() + 1) 전월 미달성 알람할 경우 진행.
         result.map((el) => {
-        // console.log(new Date(el.dataValues.endtime).getMonth() + 1) // 전월 미달성 알람할 경우 진행.
           if (new Date(`${today}`) > new Date(el.dataValues.endtime)) {
             undoList.push(el);
           }
