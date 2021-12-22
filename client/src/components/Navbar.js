@@ -10,13 +10,13 @@ const Navbar = () => {
   return (
     // https://react-icons.github.io/react-icons 참고
     <section className='navbar'>
-      <Link to='/mainpage/todolist'>
+      <Link exact to='/mainpage'>
         <ImList className='icon' />
       </Link>
-      <Link exact to='/mainpage/achievement'>
+      <Link  to='/mainpage/achievement'>
         <BsTrophyFill className='icon' />
       </Link>
-      <Link exact to='/mainpage/mypage'>
+      <Link to='/mainpage/mypage'>
         <FaUserCircle className='icon' />
       </Link>
       <div className='logouticon'>

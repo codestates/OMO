@@ -62,7 +62,7 @@ export function Todoinput ({ userInfo }) {
   const [todolist, setTodolist] = useState({
     content: '',
     endtime: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
-    color: black,
+    color: "#1A1A1A",
     tag: []
   });
   const { content, endtime, color, tag } = todolist;
@@ -96,7 +96,7 @@ export function Todoinput ({ userInfo }) {
     // axios 요청 후에 todoinput value 초기화
     if (todolist.content.length === 0) return;
     else {
-      axios.post('http://localhost:4000/todo/{:userId}', {
+      axios.post(`http://localhost:4000/todo/${userInfo.id}`, {
         data: {
           content: content,
           endtime: endtime,
@@ -104,9 +104,9 @@ export function Todoinput ({ userInfo }) {
           tag: tag
         }
       },
-      {
-        headers: { 'Contnet-Type': 'application/json' }
-      })
+      // {
+      //   headers: { 'Content-Type': 'application/json' }}
+        )
         .then((data) => {
           setTodolist({
             content: '',
