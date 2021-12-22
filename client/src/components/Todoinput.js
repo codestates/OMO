@@ -5,7 +5,6 @@ import { Selectcolor } from '../components/Selectcolor';
 
 axios.defaults.withCredentials = true;
 
-
 export const TagsInput = styled.div`
 
   display: flex;
@@ -47,40 +46,83 @@ export const TagsInput = styled.div`
   }
 `;
 
+// todo input 컨테이너 (전체 컨테이너)
 export const TodoInputContainer = styled.div`
-  display:flex;
-  justify-items: row;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 1000px;
+  border: 1px solid grey;
 `;
-export const TodoInputt = styled.input.attrs(props => ({
+
+// add input 구역 컨테이너
+export const AddInputContainer = styled.div`
+  display: flex;
+  justify-items: row;
+  height: 50%;
+  background-color: lemonchiffon;
+  position: relative;
+  box-sizing: border-box;
+  /* margin: 50px auto; */
+  padding: 20px;
+  background: #fff;
+`;
+
+// add tags 구역 컨테이너
+export const AddTagsContainer = styled.div`
+  display: flex;
+  justify-items: row;
+  height: 50%;
+  background-color: lemonchiffon;
+  position: relative;
+  box-sizing: border-box;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+`;
+
+export const AddTodoInput = styled.input.attrs(props => ({
   type: 'text',
-  size: props.size || '1em',
   placeholder: ' + Add Todo'
 }))`
 background: #ffffff;
 border-radius: 5px;
-border-style: none;
-margin: ${props => props.size};
-padding: ${props => props.size};
-width: 20rem;
-height: 8px;
+border: 1px solid #e5e5e5;
+width: 65%;
+height: 30px;
+margin: 5px;
+padding: 9px;
+
 transition: all 0.1s ease-in-out;
 &:hover {
   background: #E3E3E3;
 }
 `;
-export const PlusBTN = styled.button`
-background: #2D9BF0;
-border-style: none;
-height: 30px;
-width: 30px;
+export const AddButton = styled.button`
+  background: #4D94E6;
+  border: none;
+  color: white;
+  width: 10%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 25px;
+  border-radius: 5px;
 `;
 
 export const Calender = styled.input.attrs(props => ({
   type: 'date'
 }))`
-width: 3rem;
-height: 2rem;
+width: 15%;
+height: 30px;
+margin: 5px;
+padding: 25px;
 `;
+
+
 const black = {
   main: '#1A1A1A'
 };
@@ -177,20 +219,24 @@ export function Todoinput ({ userInfo }) {
 
   return (
     <TodoInputContainer>
-      <TodoInputt onKeyPress={keyPressEnter} onChange={contentInputHandler} value={todolist.content} />
-      <PlusBTN onClick={btnClickEventHandler}>Add</PlusBTN>
-      <Selectcolor />
-      <Calender value={todolist.endtime} onChange={endtimeInputHandler} />
-      <TagsInput>
-        <ul id='tags'>
-          {tags.map((tag, index) => (
-            <li key={index} className='tag'>
-              <span className='tag-title'>{tag}</span>
-            </li>
-          ))}
-        </ul>
-        <input className='tag-input' type='text' onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)} placeholder=' add tags' />
-      </TagsInput>
-    </TodoInputContainer>
+      <AddInputContainer>
+        <AddTodoInput onKeyPress={keyPressEnter} onChange={contentInputHandler} value={todolist.content} />
+        <AddButton onClick={btnClickEventHandler}>Add</AddButton>
+        <Selectcolor />
+        <Calender value={todolist.endtime} onChange={endtimeInputHandler} />
+        </AddInputContainer>
+      <AddTagsContainer>
+        <TagsInput>
+          <ul id='tags'>
+            {tags.map((tag, index) => (
+              <li key={index} className='tag'>
+                <span className='tag-title'>{tag}</span>
+              </li>
+            ))}
+          </ul>
+          <input className='tag-input' type='text' onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)} placeholder=' add tags' />
+        </TagsInput>
+      </AddTagsContainer>
+      </TodoInputContainer>
   );
 }

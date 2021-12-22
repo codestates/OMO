@@ -21,6 +21,8 @@ const red = {
 export const CheckTodoListContainer = styled.ul`
   display: flex;
   flex-direction: column;
+  width: 60rem;
+  align-items: center;
 `;
 
 export const CheckTodoListContainer2 = styled.span`
@@ -52,6 +54,7 @@ export const TodoListIsChecked = styled.input.attrs({
   top: 6px;
 `;  
 export const TodoListTags = styled.span`
+  align-items: left;
   position: relative;
   left: 35px;
   top: -5px;
