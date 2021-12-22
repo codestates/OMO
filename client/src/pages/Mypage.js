@@ -8,14 +8,13 @@ axios.defaults.withCredentials = true;
 
 export default function Mypage ({ userInfo }) {
   const [isSignOutModal, setIsSignOutModal] = useState(false);
-
   const [modifyUserInfoModal, setModifyUserInfoModal] = useState(false);
   const [viewUserInfo, setViewUserInfo] = useState({
     userId: userInfo.userId,
     userName: userInfo.userName,
     createdAt: userInfo.createdAt
   });
-  console.log(userInfo)
+
   const modifyUserInfoModalHandler = () => {
     setModifyUserInfoModal(!modifyUserInfoModal)
   }
@@ -57,7 +56,7 @@ export default function Mypage ({ userInfo }) {
       <Userinfo viewUserInfo={viewUserInfo} />      
       {modifyUserInfoModal ? <UserInfoModifyModal modifyUserInfoReqHandler={modifyUserInfoReqHandler} modifyUserInfoModalHandler={modifyUserInfoModalHandler}/> : null}
       {isSignOutModal ? <SignOutModal/> : null}
-      <Button onClick={modifyUserInfoModalHandler}>회원 정보 수정</Button>
+      <Button className='btnModif' onClick={modifyUserInfoModalHandler}>회원 정보 수정</Button>
       <SignOutBtn onClick={signOutModalHandler}>회원 탈퇴</SignOutBtn>
     </div>
   );
