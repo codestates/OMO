@@ -66,7 +66,7 @@ export default function Login ({ isLogin, handleLogin, handleResponseSuccess }) 
       .then((res) => {
         console.log('로그인 요청 성공했음')
         handleLogin();
-        handleResponseSuccess();
+        // handleResponseSuccess();
         history.push('/mainpage/todolist');
       })
       .catch((e) => console.log(e));
