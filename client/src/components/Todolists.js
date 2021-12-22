@@ -83,17 +83,17 @@ const deepblue = {
 };
 
 export function Todolists ({userInfo}) {
-  const [isCheckedFalse, setIsCheckedFalse] = useState(false);
-  const [isCheckedTrue, setIsCheckedTrue] = useState(true);
-
-
-  const checkedTrueItemHandler = (e) => {
-    setIsCheckedTrue(!isCheckedTrue)
+  const checkedHandler = (e) => {
+    if (e.target.checked) {
+      console.log('check true')
+      e.target.checked = false
+    }
+    else {
+      console.log('check false')
+      e.target.checked = true
+    }
   }
-  const checkedFalseItemHandler = (e) => {
-    setIsCheckedFalse(!isCheckedFalse);
-    // 만약 안되면 setIsChecked(e.target.checked)로 고쳐볼 것
-  };
+
   // Axios.get(`http://localhost:4000/todo/${userInfo.id}`)
   //   .then((data) => {
   //     console.log(data);
@@ -109,6 +109,7 @@ export function Todolists ({userInfo}) {
   //   .catch((err) => {
   //     console.log(err);
   //   });
+  
   const checkedTodoList = [];
   const unCheckedTodoList = [];
 

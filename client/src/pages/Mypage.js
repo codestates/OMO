@@ -7,14 +7,15 @@ import { UserInfoModifyModal, SignOutModal } from '../components/Modal';
 axios.defaults.withCredentials = true;
 
 export default function Mypage ({ userInfo }) {
-  const [isSignOutModal, setIsSignOutModal] = useState('false');
+  const [isSignOutModal, setIsSignOutModal] = useState(false);
+
   const [modifyUserInfoModal, setModifyUserInfoModal] = useState(false);
   const [viewUserInfo, setViewUserInfo] = useState({
     userId: userInfo.userId,
     userName: userInfo.userName,
-    createAt: userInfo.createAt
+    createdAt: userInfo.createdAt
   });
-
+  console.log(userInfo)
   const modifyUserInfoModalHandler = () => {
     setModifyUserInfoModal(!modifyUserInfoModal)
   }
@@ -53,7 +54,6 @@ export default function Mypage ({ userInfo }) {
   };
   return (
     <div>
-      <div>회원 정보</div>
       <Userinfo viewUserInfo={viewUserInfo} />      
       {modifyUserInfoModal ? <UserInfoModifyModal modifyUserInfoReqHandler={modifyUserInfoReqHandler} modifyUserInfoModalHandler={modifyUserInfoModalHandler}/> : null}
       {isSignOutModal ? <SignOutModal/> : null}

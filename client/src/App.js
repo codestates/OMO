@@ -16,12 +16,26 @@ export default function App () {
   });
   const history = useHistory();
 
-  const handleResponseSuccess = () => {
-    // isAuthenticated();
-  };
+
+  // const isAuthenticated = () => {
+  //   axios.post('http://localhost:4000/auth') // 엔드포인트 수정 필요
+  //     .then((res) => {
+  //       setUserInfo(res); // data 유형 확인 후 수정
+  //       setIsLogin(true);
+  //       history.push('/');
+  //     });
+  // };
+  // const handleResponseSuccess = () => {
+  //   isAuthenticated();
+  // };
   const handleLogin = () => {
     setIsLogin(true);
   };
+  
+  // useEffect(() => {
+  //   isAuthenticated();
+  // }, []);
+
 
   return (
     <div>
@@ -30,6 +44,9 @@ export default function App () {
           <Login
             // isLogin={isLogin}
             handleLogin={handleLogin}
+
+            LoginUserInfo={setUserInfo}
+
             // handleResponseSuccess={handleResponseSuccess}
           />
         </Route>

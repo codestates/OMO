@@ -4,7 +4,14 @@ import { Button, SignOutBtn } from './Button';
 
 
 export const ModalContainer = styled.div`
-
+width: 480px;
+height: 621px;
+background-color: white;
+position: relative;
+box-sizing: border-box;
+margin: 50px auto;
+padding: 20px;
+background: #fff;
 `
 export const ModalBackDrop = styled.div`
   position: fixed;
@@ -18,7 +25,8 @@ export const ModalContent = styled.div`
 
 `
 export const ModifyUserName = styled.input.attrs({
-  type: 'text'
+  type: 'text',
+  placeholder: "username"
 })`
 margin-top: 10px;
 border-radius: 2px;
