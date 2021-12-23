@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Button, SignOutBtn } from './Button';
 import Axios from 'axios';
 
 export const UserInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 480px;
   height: 621px;
   background-color: white;
@@ -11,6 +14,7 @@ export const UserInfoContainer = styled.div`
   margin: 50px auto;
   padding: 20px;
   background: #fff;
+  align-items: center;
 `;
 
 export const UserInfoTitle = styled.div`
@@ -25,13 +29,13 @@ export const UserInfoTitle = styled.div`
 export const ViewUserId = styled.div`
   margin: 10px;
   padding: 10px;
-  border : 1px solid #E6E6E6;
+  width: auto;
 `;
 
 export const ViewUserName = styled.div`
   margin: 10px;
   padding: 10px;
-  border : 1px solid #E6E6E6;
+  width: auto;
 `;
 
 
@@ -48,7 +52,12 @@ display:block;
 margin:auto;
 `
 
-export const Userinfo = ({ viewUserInfo }) => {
+const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const Userinfo = ({ viewUserInfo, modifyUserInfoModalHandler, signOutModalHandler }) => {
   const getJoinDate = () => {
     const startDay = new Date(viewUserInfo.createAt);
     const toDay = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
@@ -61,9 +70,13 @@ export const Userinfo = ({ viewUserInfo }) => {
     <UserInfoContainer>
       <UserInfoTitle>회원 정보</UserInfoTitle>
       <HeaderImg></HeaderImg>
-      <ViewUserId>{viewUserInfo.userId}</ViewUserId>
-      <ViewUserName>{viewUserInfo.userName}</ViewUserName>
+      <ViewUserId>Id :{viewUserInfo.userId}</ViewUserId>
+      <ViewUserName>Name :{viewUserInfo.userName}</ViewUserName>
       <ViewJoinDate>지금까지 OMO와 <font size='4' color='#2D9BF0'>{getJoinDate}</font>일 동안 함께 하셨습니다.</ViewJoinDate>
+      <BtnContainer>
+        <Button onClick={modifyUserInfoModalHandler}>회원 정보 수정</Button>
+        <SignOutBtn onClick={signOutModalHandler}>회원 탈퇴</SignOutBtn>
+      </BtnContainer>
     </UserInfoContainer>
   );
 };

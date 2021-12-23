@@ -116,11 +116,7 @@ export const AddButton = styled.button`
 export const Calender = styled.input.attrs(props => ({
   type: 'date'
 }))`
-width: 15%;
-height: 30px;
 margin: 5px;
-
-padding: 25px;
 
 `;
 

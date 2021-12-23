@@ -72,8 +72,9 @@ export const SignOutModal = ({signOutReqHandler, signOutModalHandler}) => {
   return (
     <ModalBackDrop>
       <ModalContainer>
-        <Button onClick={signOutReqHandler}/>
-        <SignOutBtn onClick={signOutModalHandler}/>
+        <div>정말로 탈퇴 하시겠습니까?</div>
+        <Button onClick={signOutReqHandler}>예</Button>
+        <SignOutBtn onClick={signOutModalHandler}>아니오</SignOutBtn>
       </ModalContainer>
     </ModalBackDrop>
   )
@@ -111,8 +112,8 @@ export const UserInfoModifyModal = ({ modifyUserInfoReqHandler, modifyUserInfoMo
           <ModifyUserPassword value={modifyPassword} onChange={handlePWCheck}/>
           <ConfirmPassword value={confirmPassword} onChange={setconfirmPasswordHandler}/>
           <ViewErrorMessage>{errorMessage}</ViewErrorMessage>
-          <Button onClick={modifyUserInfoReqHandler}/>
-          <SignOutBtn onClick={modifyUserInfoModalHandler}/>
+          <Button onClick={modifyUserInfoReqHandler}>회원 정보 수정</Button>
+          <SignOutBtn onClick={modifyUserInfoModalHandler}>나가기</SignOutBtn>
         </ModalContent>
       </ModalContainer>
     </ModalBackDrop>
