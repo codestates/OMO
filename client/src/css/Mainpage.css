@@ -1,0 +1,25 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+.mainpage {
+	background-color: whitesmoke;
+  height:50em
+}
+
+.mainpage .navbar{
+  float: left;
+  height:50em;
+	background-color: rgb(229, 227, 252);
+}
+.mainpage > .content {
+
+  height:50em;
+  background-color: whitesmoke;
+  align-items: center;
+}
+
+.footer{
+	padding: 2em;
+	background-color: rgb(229, 227, 252);
+}

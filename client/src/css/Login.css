@@ -1,0 +1,59 @@
+
+
+/* 반응형으로 만들기 */
+
+.login_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: rgb(249, 254, 225);
+  box-shadow: 1px 1px 4px grey;
+  margin: 10em;
+  padding: 20px;
+  position: relative;
+}
+
+.login_section {
+  display: flex;
+  justify-items: row;
+}
+.omo_logo {
+  display: flex;
+  width: 30rem;
+  height: 40rem;
+  border: 1px solid orange;
+  box-shadow: none;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+
+.login {
+  display: flex;
+  width: 30rem;
+  height: 40rem;
+  border: 1px solid blue;
+  box-shadow: none;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+
+.id_pw_wrap {
+  width: 20em;
+  height: 25em;
+  border: 1px solid slategrey;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: none;
+  margin: 2em;
+}
+
+.alert_box {
+  color: #721c24;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
