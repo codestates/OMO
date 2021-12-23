@@ -9,7 +9,7 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
 width:  ${props => props.theme.width};
 height:  ${props => props.theme.height};
-margin: 0px;
+margin: 10px;
 border-style: none;
 border-radius: 10px;
 font-size: 14px;
@@ -33,7 +33,7 @@ overflow: hidden;
 export const SignOutBtn = styled.button`
 width:  ${props => props.theme.width};
 height:  ${props => props.theme.height};
-margin: 0px;
+margin: 10px;
 border-style: none;
 border-radius: 10px;
 font-size: 14px;
@@ -84,13 +84,13 @@ export const SocialLoginBtn = styled.button`
 
 Button.defaultProps = {
   theme: {
-    width: '80px',
+    width: '100px',
     height: '30px'
   }
 };
 SignOutBtn.defaultProps = {
   theme: {
-    width: '80px',
+    width: '100px',
     height: '30px'
   }
 };

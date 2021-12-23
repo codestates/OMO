@@ -3,16 +3,8 @@ import axios from 'axios';
 import { Button, SignOutBtn } from '../components/Button';
 import { Userinfo } from '../components/Userinfo';
 import { UserInfoModifyModal, SignOutModal } from '../components/Modal';
-import styled from 'styled-components';
 
 axios.defaults.withCredentials = true;
-
-export const MyPageContainer = styled.div`
-  display: flex;
-`;
-
-
-
 
 export default function Mypage ({ userInfo }) {
   const [isSignOutModal, setIsSignOutModal] = useState(false);
@@ -63,11 +55,9 @@ export default function Mypage ({ userInfo }) {
   };
   return (
     <div>
-      <Userinfo viewUserInfo={viewUserInfo} />      
+      <Userinfo viewUserInfo={viewUserInfo} modifyUserInfoModalHandler={modifyUserInfoModalHandler} signOutModalHandler={signOutModalHandler}/>      
       {modifyUserInfoModal ? <UserInfoModifyModal modifyUserInfoReqHandler={modifyUserInfoReqHandler} modifyUserInfoModalHandler={modifyUserInfoModalHandler}/> : null}
       {isSignOutModal ? <SignOutModal signOutReqHandler={signOutReqHandler} signOutModalHandler={signOutModalHandler}/> : null}
-      <Button onClick={modifyUserInfoModalHandler}>회원 정보 수정</Button>
-      <SignOutBtn onClick={signOutModalHandler}>회원 탈퇴</SignOutBtn>
     </div>
   );
 }
