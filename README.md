@@ -14,3 +14,17 @@ OMO는 당신의 업무 관리를 적극적으로 도와주는 웹 애플리케�
 |[서한석](https://github.com/holystorySeo)|BackEnd|
 |[신현경](https://github.com/hellohyonee)|FrontEnd|
 |[안승호](https://github.com/Seunghoya)|FrontEnd|
+
+<br/><br/>
+
+## **Development**
+
+---
+
+### Fronted **Stack**
+
+HTML, Node.js, React, Axios, Styled-Copmponents
+
+### Backed **Stack**
+
+Node.js, MySQL, Axios, Sequealize, JWT, Express, Bcrypy
